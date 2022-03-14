@@ -43,6 +43,8 @@ function App() {
     <div>
     <NavBar user={user} handleLogOutClick={handleLogOutClick} />
       YOU ARE LOGGED IN!
+
+      UPDATE
       
       <button onClick={handleLogOutClick}> LOGG OUT BUTTON </button>
     </div>

@@ -15,7 +15,7 @@ function Login({ onLogin }){
             <Row className="justify-content-md-center">
                 <Col>
                     <Figure>
-                        <Figure.Image width={600} alt="BZN PARTY"/>
+                        <Figure.Image width={1500} src="https://static1.colliderimages.com/wordpress/wp-content/uploads/2021/12/best-animal-crossing-villagers.jpg?q=50&fit=contain&w=480&h=240&dpr=1.5" alt="Animal Crossing Logo"/>
                     </Figure>
                 </Col>
                 <Col>

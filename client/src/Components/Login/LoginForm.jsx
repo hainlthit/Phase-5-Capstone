@@ -27,7 +27,7 @@ function LoginForm({onLogin}) {
     
     return (
         <Container>
-            <h1>LOG IN FORM BABY</h1>
+            <h1>Villagrr</h1>
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3">
                     <Form.Label>Email address</Form.Label>

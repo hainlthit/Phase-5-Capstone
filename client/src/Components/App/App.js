@@ -3,7 +3,8 @@ import Login from "../Login/Login";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import NavBar from "../NavBar/NavBar";
 import { Container, Alert } from "react-bootstrap";
-import VillagerContainer from "../Villagers/VillagerContainer.jsx"
+import Home from "../Home/Home";
+import VillagerContainer from "../Villagers/VillagerContainer.jsx";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -35,7 +36,7 @@ function App() {
       <>
         <Container>
           <Alert variant="primary">
-            Please Login OR Signup To Create A New Account
+            Please Login OR Create an Account to enter
           </Alert>
         </Container>
         <Login onLogin={setUser} />
@@ -43,19 +44,26 @@ function App() {
     );
 
   return (
-    <div>
+    <div class="container">
       <NavBar user={user} handleLogOutClick={handleLogOutClick} />
       <Routes>
+        <Route exact path="/home" element={<Home />} />
         <Route exact path="/villagers" element={<VillagerContainer />} />
         {/* <Route exact path="/classes" element={<Classes />} /> */}
         {/* <Route exact path="/spells" element={<Spells />} /> */}
         {/* <Route exact path="/skills" element={<Skills />} /> */}
         {/* <Route exact path="/spells/:id" element={<SpellDetail />} /> */}
       </Routes>
-      <button onClick={handleLogOutClick}> LOGGOUT BUTTON </button>
-      
     </div>
   );
 }
 
 export default App;
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      Navbar
+    </a>
+  </div>
+</nav>;

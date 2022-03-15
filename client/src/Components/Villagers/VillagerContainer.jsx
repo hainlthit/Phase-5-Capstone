@@ -1,7 +1,11 @@
-import React from 'react'
+import React from "react";
+import VillagerList from "./VillagerList"
 
 export default function VillagerContainer() {
   return (
-    <div>VillagerContainers</div>
-  )
+    <>
+      <div>All Villagers</div>
+      <VillagerList />
+    </>
+  );
 }

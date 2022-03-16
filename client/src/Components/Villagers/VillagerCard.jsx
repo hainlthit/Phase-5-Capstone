@@ -9,10 +9,32 @@ export default function VillagerCard( {data} ) {
     setFlipCard(!flipCard);
   }
 
+  function shuffle(array) {
+    let currentIndex = array.length,  randomIndex;
+  
+    // While there remain elements to shuffle...
+    while (currentIndex != 0) {
+  
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+  
+      // And swap it with the current element.
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex], array[currentIndex]];
+    }
+  
+    return array;
+  }
+  
+  // Used like so
+  shuffle(data);
+  console.log(data);
+
   return (
     <>
-      <h1 className="reviews-h1"></h1>
-      <Carousel>
+      <h1 className="reviews-h1">MEET PPL!</h1>
+      <Carousel >
         {data.map((data) => (
           <Carousel.Item key={data.id}>
             {flipCard ? (

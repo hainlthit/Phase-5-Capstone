@@ -33,7 +33,7 @@ export default function VillagerCard( {data} ) {
 
   return (
     <>
-      <h1 className="reviews-h1">MEET PPL!</h1>
+      <h1 className="reviews-h1" style={{ textAlign: "center" }}>Meet a random Villager!</h1>
       <Carousel >
         {data.map((data) => (
           <Carousel.Item key={data.id}>
@@ -69,7 +69,7 @@ export default function VillagerCard( {data} ) {
                 </div>
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item" style={{ textAlign: "center" }}>
-                    Birthday: {data.birthday}
+                    Birthday: {data["birthday-string"]}
                   </li>
                   <li class="list-group-item" style={{ textAlign: "center" }}>
                     Species: {data.species}

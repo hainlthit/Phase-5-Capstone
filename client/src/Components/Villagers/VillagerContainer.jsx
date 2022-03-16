@@ -9,7 +9,7 @@ export default function VillagerContainer( {data} ) {
 
   return (
     <>
-      <div>All Villagers</div>
+      <div style={{ textAlign: "center" }} >All Villagers</div>
       <VillagerList data={data}/>
     </>
   );

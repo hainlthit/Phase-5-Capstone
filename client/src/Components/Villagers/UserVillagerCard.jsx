@@ -34,6 +34,9 @@ export default function UserVillagerCard({ userVillagers }) {
                     Personality: {data.personality}
                   </li>
                   <li class="list-group-item" style={{ textAlign: "center" }}>
+                    Created By: {data.created_by}
+                  </li>
+                  <li class="list-group-item" style={{ textAlign: "center" }}>
                     {/* <Button
                       onClick={flipHandler}
                       aria-pressed="false"

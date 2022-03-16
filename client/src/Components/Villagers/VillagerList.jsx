@@ -7,8 +7,6 @@ export default function VillagerList({ data , userVillagers }) {
   
   const [flip, setFlip] = useState(true);
 
-
-
   function flipTrue() {
     setFlip(true);
   }

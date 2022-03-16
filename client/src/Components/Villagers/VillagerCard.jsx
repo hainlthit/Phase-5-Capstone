@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import { Carousel } from "react-bootstrap";
 
-export default function VillagerCard() {
+export default function VillagerCard( { data }) {
   const [flipCard, setFlipCard] = useState(true);
 
   function flipHandler() {
@@ -42,15 +42,15 @@ export default function VillagerCard() {
   return (
     <>
       <h1 className="reviews-h1">Carousel Test</h1>
-      <Carousel onClick={flipHandler}>
-        {animals.map((animal) => (
-          <Carousel.Item key={animal.id}>
+      <Carousel>
+        {data.map((data) => (
+          <Carousel.Item key={data.id}>
             {flipCard ? (
               <div class="card">
-                <img class="card-img-top" src={animal.image} alt="Cyrano"></img>
+                <img class="card-img-top" src={data.icon_uri} alt="Icon Image"></img>
                 <div class="card-body">
                   <h5 class="card-title" style={{ textAlign: "center" }}>
-                    Cyrano
+                    {data.name["name-USen"]}
                   </h5>
                   <div class="card-body" style={{ textAlign: "center" }}>
                     <Button onClick={flipHandler} aria-pressed="false">
@@ -63,23 +63,23 @@ export default function VillagerCard() {
               <div class="card">
                 <img
                   class="card-img-top"
-                  src={animal.image2}
-                  alt="Cyrano"
+                  src={data.image_uri}
+                  alt="Character Image"
                 ></img>
                 <div class="card-body">
                   <h5 class="card-title" style={{ textAlign: "center" }}>
-                    {animal.name}
+                  {data.name["name-USen"]}
                   </h5>
                 </div>
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item" style={{ textAlign: "center" }}>
-                    Birthday: {animal.birthday}
+                    Birthday: {data.birthday}
                   </li>
                   <li class="list-group-item" style={{ textAlign: "center" }}>
-                    Dpecies: {animal.species}
+                    Species: {data.species}
                   </li>
                   <li class="list-group-item" style={{ textAlign: "center" }}>
-                    Personality: {animal.personality}
+                    Personality: {data.personality}
                   </li>
                   <li class="list-group-item" style={{ textAlign: "center" }}>
                     <Button

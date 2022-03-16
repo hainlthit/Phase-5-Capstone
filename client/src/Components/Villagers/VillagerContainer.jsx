@@ -1,15 +1,11 @@
 import React, { useState, useEffect } from "react";
 import VillagerList from "./VillagerList"
 
-export default function VillagerContainer() {
+export default function VillagerContainer( {data} ) {
 
-  const [data, setData] = useState('')
 
-  useEffect(() => {
-    fetch('https://acnhapi.com/v1a/villagers')
-      .then(r => r.json())
-      .then(data => setData(data))
-  }, [])
+  
+  console.log(data)
 
   return (
     <>

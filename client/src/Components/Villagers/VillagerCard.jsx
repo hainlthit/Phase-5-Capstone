@@ -2,55 +2,29 @@ import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import { Carousel } from "react-bootstrap";
 
-export default function VillagerCard( { data }) {
+export default function VillagerCard( {data} ) {
   const [flipCard, setFlipCard] = useState(true);
 
   function flipHandler() {
     setFlipCard(!flipCard);
   }
 
-  const animals = [
-    {
-      id: 1,
-      image: "https://acnhapi.com/v1/icons/villagers/1",
-      image2: "https://acnhapi.com/v1/images/villagers/1",
-      name: "Cyrano",
-      personality: "Cranky",
-      birthday: "9/3",
-      species: "Anteater",
-    },
-    {
-      id: 2,
-      image: "https://acnhapi.com/v1/icons/villagers/2",
-      image2: "https://acnhapi.com/v1/images/villagers/2",
-      name: "Bobby",
-      personality: "Nice",
-      birthday: "9/4",
-      species: "Anteater",
-    },
-    {
-      id: 3,
-      image: "https://acnhapi.com/v1/icons/villagers/3",
-      image2: "https://acnhapi.com/v1/images/villagers/3",
-      name: "Tina",
-      personality: "Cranky",
-      birthday: "9/3",
-      species: "Anteater",
-    },
-  ];
-
   return (
     <>
-      <h1 className="reviews-h1">Carousel Test</h1>
+      <h1 className="reviews-h1"></h1>
       <Carousel>
         {data.map((data) => (
           <Carousel.Item key={data.id}>
             {flipCard ? (
               <div class="card">
-                <img class="card-img-top" src={data.icon_uri} alt="Icon Image"></img>
+                <img
+                  class="card-img-top"
+                  src={data.icon_uri}
+                  alt="Icon Image"
+                ></img>
                 <div class="card-body">
                   <h5 class="card-title" style={{ textAlign: "center" }}>
-                    {data.name["name-USen"]}
+                    {data.name['name-USen']}
                   </h5>
                   <div class="card-body" style={{ textAlign: "center" }}>
                     <Button onClick={flipHandler} aria-pressed="false">
@@ -68,7 +42,7 @@ export default function VillagerCard( { data }) {
                 ></img>
                 <div class="card-body">
                   <h5 class="card-title" style={{ textAlign: "center" }}>
-                  {data.name["name-USen"]}
+                  {data.name['name-USen']}
                   </h5>
                 </div>
                 <ul class="list-group list-group-flush">

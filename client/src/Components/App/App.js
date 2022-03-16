@@ -11,6 +11,14 @@ function App() {
   console.log(user);
   const navigate = useNavigate();
 
+  const [data, setData] = useState('')
+
+  useEffect(() => {
+    fetch('https://acnhapi.com/v1a/villagers')
+      .then(r => r.json())
+      .then(data => setData(data))
+  }, [])
+
   useEffect(() => {
     fetch("/me").then((r) => {
       if (r.ok) {
@@ -48,7 +56,7 @@ function App() {
       <NavBar user={user} handleLogOutClick={handleLogOutClick} />
       <Routes>
         <Route exact path="/home" element={<Home />} />
-        <Route exact path="/villagers" element={<VillagerContainer />} />
+        <Route exact path="/villagers" element={<VillagerContainer data={data} />} />
         {/* <Route exact path="/classes" element={<Classes />} /> */}
         {/* <Route exact path="/spells" element={<Spells />} /> */}
         {/* <Route exact path="/skills" element={<Skills />} /> */}

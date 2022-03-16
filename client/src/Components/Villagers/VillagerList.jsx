@@ -1,12 +1,47 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import VillagerCard from "./VillagerCard";
+import UserVillagerCard from "./UserVillagerCard";
+import { Button } from "react-bootstrap";
 
 export default function VillagerList({ data }) {
+  const [userVillagers, setUserVillagers] = useState("");
+  const [flip, setFlip] = useState(true);
+
+  useEffect(() => {
+    fetch("/villagers")
+      .then((r) => r.json())
+      .then((data) => setUserVillagers(data));
+  }, []);
+
+  function flipTrue() {
+    setFlip(true);
+  }
+  function flipFalse() {
+    setFlip(false);
+  }
   return (
     <>
-      <h1 style={{ textAlign: "center" }}> Random Villagers </h1>
-      <VillagerCard data={data} />
-      <h1 style={{ textAlign: "center" }} > User Created Villagers </h1>
+      <div class="container" style={{ textAlign: "center" }}>
+        <div class="row">
+          <div class="col">
+            <Button onClick={flipTrue}> Random </Button>
+          </div>
+          <div class="col">
+            <Button onClick={flipFalse}> Users </Button>
+          </div>
+        </div>
+      </div>
+      {flip ? (
+        <div>
+          <h1 style={{ textAlign: "center" }}> Random Villagers </h1>
+          <VillagerCard data={data} />
+        </div>
+      ) : (
+        <div>
+          <h1 style={{ textAlign: "center" }}> User Created Villagers </h1>
+          <UserVillagerCard userVillagers={userVillagers} />
+        </div>
+      )}
     </>
   );
 }

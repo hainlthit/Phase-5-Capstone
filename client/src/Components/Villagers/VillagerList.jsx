@@ -3,15 +3,11 @@ import VillagerCard from "./VillagerCard";
 import UserVillagerCard from "./UserVillagerCard";
 import { Button } from "react-bootstrap";
 
-export default function VillagerList({ data }) {
-  const [userVillagers, setUserVillagers] = useState("");
+export default function VillagerList({ data , userVillagers }) {
+  
   const [flip, setFlip] = useState(true);
 
-  useEffect(() => {
-    fetch("/villagers")
-      .then((r) => r.json())
-      .then((data) => setUserVillagers(data));
-  }, []);
+
 
   function flipTrue() {
     setFlip(true);

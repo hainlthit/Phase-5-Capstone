@@ -5,6 +5,7 @@ import NavBar from "../NavBar/NavBar";
 import { Container, Alert } from "react-bootstrap";
 import Home from "../Home/Home";
 import VillagerContainer from "../Villagers/VillagerContainer.jsx";
+import NewVillagerForm from "../Villagers/NewVillagerForm.jsx"
 
 function App() {
   const [user, setUser] = useState(null);
@@ -12,12 +13,7 @@ function App() {
   const navigate = useNavigate();
 
   const [data, setData] = useState('')
-
-  useEffect(() => {
-    fetch('https://acnhapi.com/v1a/villagers')
-      .then(r => r.json())
-      .then(data => setData(data))
-  }, [])
+  const [userVillagers, setUserVillagers] = useState("");
 
   useEffect(() => {
     fetch("/me").then((r) => {
@@ -26,6 +22,20 @@ function App() {
       }
     });
   }, []);
+
+  useEffect(() => {
+    fetch('https://acnhapi.com/v1a/villagers')
+      .then(r => r.json())
+      .then(data => setData(data))
+  }, [])
+
+  useEffect(() => {
+    fetch("/villagers")
+      .then((r) => r.json())
+      .then((data) => setUserVillagers(data));
+  }, []);
+
+
 
   function handleLogOutClick() {
     fetch("/logout", {
@@ -56,8 +66,8 @@ function App() {
       <NavBar user={user} handleLogOutClick={handleLogOutClick} />
       <Routes>
         <Route exact path="/home" element={<Home />} />
-        <Route exact path="/villagers" element={<VillagerContainer data={data} />} />
-        {/* <Route exact path="/classes" element={<Classes />} /> */}
+        <Route exact path="/villagers" element={<VillagerContainer data={data} userVillagers={userVillagers} />} />
+        <Route exact path="/add_villager" element={<NewVillagerForm />} />
         {/* <Route exact path="/spells" element={<Spells />} /> */}
         {/* <Route exact path="/skills" element={<Skills />} /> */}
         {/* <Route exact path="/spells/:id" element={<SpellDetail />} /> */}

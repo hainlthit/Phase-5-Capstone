@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import VillagerList from "./VillagerList"
 
-export default function VillagerContainer( {data} ) {
+export default function VillagerContainer( {data, userVillagers } ) {
 
 
   
@@ -10,7 +10,7 @@ export default function VillagerContainer( {data} ) {
   return (
     <>
       <div style={{ textAlign: "center" }} >All Villagers</div>
-      <VillagerList data={data}/>
+      <VillagerList data={data} userVillagers={userVillagers} />
     </>
   );
 }

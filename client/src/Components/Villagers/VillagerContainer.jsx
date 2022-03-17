@@ -1,16 +1,16 @@
 import React from "react";
 import VillagerList from "./VillagerList"
 
-export default function VillagerContainer( {data, userVillagers } ) {
+export default function VillagerContainer( {villagerData, userVillagers } ) {
 
 
   
-  console.log(data)
+  console.log(villagerData)
 
   return (
     <>
       <div style={{ textAlign: "center" }} >All Villagers</div>
-      <VillagerList data={data} userVillagers={userVillagers} />
+      <VillagerList villagerData={villagerData} userVillagers={userVillagers} />
     </>
   );
 }

@@ -6,28 +6,31 @@ import { Container, Alert } from "react-bootstrap";
 import Home from "../Home/Home";
 import VillagerContainer from "../Villagers/VillagerContainer.jsx";
 import NewVillagerForm from "../Villagers/NewVillagerForm.jsx"
+import { useSelector, useDispatch } from "react-redux";
+import { fetchVillagers } from "../Villagers/villagersSlice";
+
 
 function App() {
   const [user, setUser] = useState(null);
   console.log(user);
   const navigate = useNavigate();
-
-  const [data, setData] = useState('')
+  // const [data, setData] = useState('')
   const [userVillagers, setUserVillagers] = useState("");
 
-  useEffect(() => {
-    fetch("/me").then((r) => {
-      if (r.ok) {
-        r.json().then((user) => setUser(user));
-      }
-    });
-  }, []);
+  const villagerData = useSelector((state) => state.villagers.entities);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch('https://acnhapi.com/v1a/villagers')
-      .then(r => r.json())
-      .then(data => setData(data))
-  }, [])
+    dispatch(fetchVillagers());
+  }, [dispatch]);
+
+  console.log(villagerData)
+
+  // useEffect(() => {
+  //   fetch('https://acnhapi.com/v1a/villagers')
+  //     .then(r => r.json())
+  //     .then(data => setData(data))
+  // }, [])
 
   useEffect(() => {
     fetch("/villagers")
@@ -61,6 +64,8 @@ function App() {
     navigate("/");
   }
 
+
+
   if (!user)
     return (
       <>
@@ -78,7 +83,7 @@ function App() {
       <NavBar user={user} handleLogOutClick={handleLogOutClick} />
       <Routes>
         <Route exact path="/home" element={<Home />} />
-        <Route exact path="/villagers" element={<VillagerContainer data={data} userVillagers={userVillagers} />} />
+        <Route exact path="/villagers" element={<VillagerContainer villagerData={villagerData} userVillagers={userVillagers} />} />
         <Route exact path="/add_villager" element={<NewVillagerForm handlePost={handlePost}  username={user.username} />} />
         {/* <Route exact path="/spells" element={<Spells />} /> */}
         {/* <Route exact path="/skills" element={<Skills />} /> */}

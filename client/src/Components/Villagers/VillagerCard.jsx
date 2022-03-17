@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import { Carousel } from "react-bootstrap";
 
-export default function VillagerCard( {data} ) {
+export default function VillagerCard( {villagerData} ) {
   const [flipCard, setFlipCard] = useState(true);
 
   function flipHandler() {
@@ -28,14 +28,14 @@ export default function VillagerCard( {data} ) {
   }
   
   // Used like so
-  shuffle(data);
-  console.log(data);
+  // shuffle(villagerData);
+
 
   return (
     <>
       <h1 className="reviews-h1" style={{ textAlign: "center" }}>Meet a random Villager!</h1>
       <Carousel >
-        {data.map((data) => (
+        {villagerData.map((data) => (
           <Carousel.Item key={data.id}>
             {flipCard ? (
               <div class="card">

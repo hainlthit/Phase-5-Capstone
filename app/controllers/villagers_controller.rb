@@ -10,4 +10,15 @@ class VillagersController < ApplicationController
         render json: villager, status: :ok
     end
 
+    def create
+        villager = Villager.create!(villager_params)
+        render json: villager, status: :created
+    end
+
+    private
+
+    def villager_params
+        params.permit(:name, :species, :birthday, :personality, :image, :likes, :created_by)
+    end
+
 end

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import { Button } from "react-bootstrap";
 
-export default function NewVillagerForm() {
+export default function NewVillagerForm({ handlePost, username }) {
   const [newName, setNewName] = useState("");
   const [newSpecies, setNewSpecies] = useState("");
   const [newBirthday, setNewBirthday] = useState("");
@@ -26,6 +27,26 @@ export default function NewVillagerForm() {
   function handleSetNewImage(e) {
     setNewImage(e.target.value);
   }
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    const newVillagerObj = {
+      name: newName,
+      species: newSpecies,
+      birthday: newBirthday,
+      personality: newPersonality,
+      image: newImage,
+      likes: 0,
+      created_by: username,
+    };
+    handlePost(newVillagerObj);
+    console.log(newVillagerObj);
+    setNewName("")
+    setNewSpecies("")
+    setNewBirthday("")
+    setNewPersonality("")
+    setNewImage("")
+  }
 
   return (
     <>
@@ -37,7 +58,7 @@ export default function NewVillagerForm() {
 
       <h1 style={{ textAlign: "center" }}>NewVillagerForm</h1>
 
-      <form>
+      <form onSubmit={handleSubmit}>
         <div class="form-group">
           <label for="exampleFormControlInput1">Name</label>
           <input
@@ -92,6 +113,11 @@ export default function NewVillagerForm() {
             value={newImage}
             onChange={handleSetNewImage}
           />
+        </div>
+        <br />
+        <br />
+        <div type="submit" style={{ textAlign: "center" }}>
+          <button className="form-input">New Villager</button>
         </div>
       </form>
     </>

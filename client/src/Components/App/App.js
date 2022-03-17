@@ -35,7 +35,19 @@ function App() {
       .then((data) => setUserVillagers(data));
   }, []);
 
-
+  function handlePost(obj){
+    fetch('/villagers',{
+      method:'POST',
+      headers: {'Content-Type': 'application/json'},
+      body:JSON.stringify(obj)
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log(data)
+        setUserVillagers([...userVillagers, data])
+      }
+    )
+  }
 
   function handleLogOutClick() {
     fetch("/logout", {
@@ -67,7 +79,7 @@ function App() {
       <Routes>
         <Route exact path="/home" element={<Home />} />
         <Route exact path="/villagers" element={<VillagerContainer data={data} userVillagers={userVillagers} />} />
-        <Route exact path="/add_villager" element={<NewVillagerForm />} />
+        <Route exact path="/add_villager" element={<NewVillagerForm handlePost={handlePost}  username={user.username} />} />
         {/* <Route exact path="/spells" element={<Spells />} /> */}
         {/* <Route exact path="/skills" element={<Skills />} /> */}
         {/* <Route exact path="/spells/:id" element={<SpellDetail />} /> */}

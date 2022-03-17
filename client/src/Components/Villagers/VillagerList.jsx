@@ -3,7 +3,7 @@ import VillagerCard from "./VillagerCard";
 import UserVillagerCard from "./UserVillagerCard";
 import { Button } from "react-bootstrap";
 
-export default function VillagerList({ villagerData , userVillagers }) {
+export default function VillagerList() {
   
   const [flip, setFlip] = useState(true);
 
@@ -28,12 +28,12 @@ export default function VillagerList({ villagerData , userVillagers }) {
       {flip ? (
         <div>
           <h1 style={{ textAlign: "center" }}> Random Villagers </h1>
-          <VillagerCard villagerData={villagerData} />
+          <VillagerCard />
         </div>
       ) : (
         <div>
           <h1 style={{ textAlign: "center" }}> User Created Villagers </h1>
-          <UserVillagerCard userVillagers={userVillagers} />
+          <UserVillagerCard  />
         </div>
       )}
     </>

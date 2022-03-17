@@ -12,14 +12,13 @@ export const fetchVillagers = createAsyncThunk(
 const villagersSlice = createSlice({
   name: "villagers",
   initialState: {
-    entities: [], // array of cats
-    status: "idle", // loading state
+    entities: [], 
+    status: "idle", 
   },
   reducers: {
 
   },
   extraReducers: {
-    // handle async actions: pending, fulfilled, rejected (for errors)
     [fetchVillagers.pending](state) {
       state.status = "loading";
     },

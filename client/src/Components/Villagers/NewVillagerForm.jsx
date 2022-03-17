@@ -1,12 +1,16 @@
 import React, { useState } from "react";
-import { Button } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { newVillagerAdded } from "./newVillagersSlice";
+import { useNavigate } from "react-router-dom";
 
-export default function NewVillagerForm({ handlePost, username }) {
+export default function NewVillagerForm({ username }) {
   const [newName, setNewName] = useState("");
   const [newSpecies, setNewSpecies] = useState("");
   const [newBirthday, setNewBirthday] = useState("");
   const [newPersonality, setNewPersonality] = useState("");
   const [newImage, setNewImage] = useState("");
+  const navigate = useNavigate();
+  
 
   function handleSetNewName(e) {
     setNewName(e.target.value);
@@ -27,6 +31,9 @@ export default function NewVillagerForm({ handlePost, username }) {
   function handleSetNewImage(e) {
     setNewImage(e.target.value);
   }
+
+  const dispatch = useDispatch();
+
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -39,13 +46,14 @@ export default function NewVillagerForm({ handlePost, username }) {
       likes: 0,
       created_by: username,
     };
-    handlePost(newVillagerObj);
+    dispatch(newVillagerAdded(newVillagerObj))
     console.log(newVillagerObj);
     setNewName("")
     setNewSpecies("")
     setNewBirthday("")
     setNewPersonality("")
     setNewImage("")
+    navigate("/villagers")
   }
 
   return (

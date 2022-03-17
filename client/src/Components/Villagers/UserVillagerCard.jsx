@@ -1,9 +1,11 @@
 import React from "react";
 import { Carousel, Button } from "react-bootstrap";
-import NewVillagerForm from "./NewVillagerForm";
 import {Link} from 'react-router-dom';
+import { useSelector } from "react-redux";
 
-export default function UserVillagerCard({ userVillagers }) {
+export default function UserVillagerCard() {
+
+  const userVillagers = useSelector((state) => state.newVillagers.entities);
   return (
     <>
       <h1 className="reviews-h1" style={{ textAlign: "center" }}>

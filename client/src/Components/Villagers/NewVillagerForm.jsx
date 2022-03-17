@@ -114,8 +114,6 @@ export default function NewVillagerForm({ handlePost, username }) {
             onChange={handleSetNewImage}
           />
         </div>
-        <br />
-        <br />
         <div type="submit" style={{ textAlign: "center" }}>
           <button className="form-input">New Villager</button>
         </div>

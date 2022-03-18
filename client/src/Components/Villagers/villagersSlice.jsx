@@ -1,22 +1,27 @@
-import {
-  RETRIEVE_VILLAGERS
-} from "../actions/types";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import VillagerDataService from "../../services/villagerServices";
 
-const initialState = [];
-
-function villagerReducer(villagers = initialState, action) {
-  const { type, payload } = action;
-
-  switch (type) {
-    case RETRIEVE_VILLAGERS:
-      return payload;
-
-    default:
-      return villagers;
+export const fetchVillagers = createAsyncThunk(
+  "villagers/fetchData",
+  async () => {
+    const res = await VillagerDataService.getAll();
+    return res.data;
   }
-};
+);
 
-export default villagerReducer;
+const villagersSlice = createSlice({
+  name: "villagers",
+  initialState: {
+    entities: [],
+  },
+  extraReducers: {
+    [fetchVillagers.fulfilled]: (state, action) => {
+      return [...action.payload];
+    },
+  },
+});
+
+export default villagersSlice.reducer;
 
 // import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 // import { client } from "../../api/client"
@@ -32,8 +37,8 @@ export default villagerReducer;
 // const villagersSlice = createSlice({
 //   name: "villagers",
 //   initialState: {
-//     entities: [], 
-//     status: "idle", 
+//     entities: [],
+//     status: "idle",
 //   },
 //   reducers: {
 
@@ -48,7 +53,5 @@ export default villagerReducer;
 //     },
 //   },
 // });
-
-
 
 // export default villagersSlice.reducer;

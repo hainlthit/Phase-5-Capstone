@@ -11,8 +11,8 @@ export const fetchNewVillagers = createAsyncThunk(
 
 export const addNewVillagers = createAsyncThunk(
   "newVillagers/addNewVillagers",
-  async (initialPost) => {
-    const response = await client.post("/villagers", initialPost);
+  async (initialNewVillagers) => {
+    const response = await client.post("/villagers", initialNewVillagers);
     return response.data;
   }
 );

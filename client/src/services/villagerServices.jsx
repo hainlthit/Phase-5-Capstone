@@ -1,9 +1,12 @@
-import http from "../http-common";
+import http from "./http-villagers";
 
-class VillagerDataService {
-  getAll() {
-    return http.get("/villagers");
-  }
-}
+const getAll = () => {
+  return http.get("");
+};
 
-export default new VillagerDataService();
+const VillagerDataService = {
+  getAll
+};
+
+export default VillagerDataService;
+

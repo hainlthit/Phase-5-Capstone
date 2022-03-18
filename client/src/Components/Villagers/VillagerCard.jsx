@@ -10,7 +10,7 @@ export default function VillagerCard() {
     setFlipCard(!flipCard);
   }
   
-  const villagerData = useSelector((state) => [...state.villagers.entities]);
+  const villagerData = useSelector((state) => [...state.villagers]);
 
   function shuffle(array) {
     let currentIndex = array.length,  randomIndex;

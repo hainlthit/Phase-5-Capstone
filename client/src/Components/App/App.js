@@ -29,8 +29,8 @@ function App() {
     dispatch(fetchNewVillagers());
   }, [dispatch]);
 
-  const villagerData = useSelector((state) => state.newVillagers.entities);
-  console.log(villagerData)
+  // const villagerData = useSelector((state) => state.newVillagers);
+  // console.log(villagerData)
 
 
 

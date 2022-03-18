@@ -1,10 +1,62 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Carousel, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { deleteVillager } from "./newVillagersSlice";
+import newVillagerDataService from "../../services/newVillagerServices";
 
-export default function UserVillagerCard() {
-  const userVillagers = useSelector((state) => state.newVillagers.entities);
+const UserVillagerCard = (props) => {
+  // const initialVillagerState = {
+  //   id: null,
+  //   name: "",
+  //   species: "",
+  //   birthday: "",
+  //   personality: "",
+  //   image: "",
+  //   likes: "",
+  //   created_by: "",
+  // };
+
+  // const [currentVillager, setCurrentVillager] = useState(initialVillagerState);
+
+  // const getVillager = (id) => {
+  //   newVillagerDataService
+  //     .get(id)
+  //     .then((response) => {
+  //       setCurrentVillager(response.data);
+  //     })
+  //     .catch((e) => {
+  //       console.log(e);
+  //     });
+  // };
+
+  // // useEffect(() => {
+  // //   getVillager();
+  // // }, []);
+
+  // console.log(currentVillager);
+
+  // console.log(userVillagers)
+
+  // const dispatch = useDispatch();
+
+  // const handleDelete = (data) => {
+  //   dispatch(deleteVillager({ id: data.id }))
+  //     .unwrap()
+  //     .then(() => {
+  //       props.history.push("/villagers");
+  //     })
+  //     .catch((e) => {
+  //       console.log(e);
+  //     });
+  // };
+
+
+  const userVillagers = useSelector((state) => state.newVillagers);
+
+
+
+
   return (
     <>
       <h1 className="reviews-h1" style={{ textAlign: "center" }}>
@@ -48,6 +100,7 @@ export default function UserVillagerCard() {
                     >
                       See less
                     </Button> */}
+                  {/* <button onClick={handleDelete}> Deletus Moi </button> */}
                 </li>
                 <li
                   class="list-group-item"
@@ -60,4 +113,6 @@ export default function UserVillagerCard() {
       </Carousel>
     </>
   );
-}
+};
+
+export default UserVillagerCard;

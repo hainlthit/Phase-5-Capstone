@@ -45,8 +45,14 @@ export default function NewVillagerForm({ username }) {
       likes: 0,
       created_by: username,
     };
-    dispatch(addNewVillagers(newVillagerObj));
-    console.log(newVillagerObj);
+    dispatch(addNewVillagers(newVillagerObj))
+      .unwrap()
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
     setNewName("");
     setNewSpecies("");
     setNewBirthday("");
@@ -54,7 +60,6 @@ export default function NewVillagerForm({ username }) {
     setNewImage("");
     navigate("/villagers");
   }
-
 
   return (
     <>

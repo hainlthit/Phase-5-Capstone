@@ -15,6 +15,18 @@ class VillagersController < ApplicationController
         render json: villager, status: :created
     end
 
+    def update 
+        villager = Villager.find(params[:id])
+        villager.update!(spell_params)
+        render json: villager, status: :ok
+    end 
+
+    def destroy
+        villager = Villager.find(params[:id])
+        Villager.delete
+        render json: {} 
+    end 
+
     private
 
     def villager_params

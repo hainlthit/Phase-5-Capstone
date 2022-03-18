@@ -1,11 +1,19 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { client } from "../../api/client"
 
 export const fetchNewVillagers = createAsyncThunk(
   "newVillagers/fetchNewVillagers",
-  () => {
-    return fetch("/villagers")
-      .then((response) => response.json())
-      .then((data) => data);
+  async () => {
+    const response = await client.get("/villagers");
+    return response.data;
+  }
+);
+
+export const addNewVillagers = createAsyncThunk(
+  "newVillagers/addNewVillagers",
+  async (initialPost) => {
+    const response = await client.post("/villagers", initialPost);
+    return response.data;
   }
 );
 
@@ -15,12 +23,9 @@ const newVillagersSlice = createSlice({
     entities: [],
     status: "idle",
   },
-  reducers: {
-    newVillagerAdded(state, action) {
-      state.entities.push(action.payload);
-    },
-  },
+  reducers: {},
   extraReducers: {
+    // handle async actions: pending, fulfilled, rejected (for errors)
     [fetchNewVillagers.pending](state) {
       state.status = "loading";
     },
@@ -28,9 +33,9 @@ const newVillagersSlice = createSlice({
       state.entities = action.payload;
       state.status = "idle";
     },
+    
   },
 });
-
 export const { newVillagerAdded } = newVillagersSlice.actions;
 
 export default newVillagersSlice.reducer;

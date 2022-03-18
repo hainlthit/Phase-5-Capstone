@@ -1,10 +1,9 @@
 import React from "react";
 import { Carousel, Button } from "react-bootstrap";
-import {Link} from 'react-router-dom';
+import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 export default function UserVillagerCard() {
-
   const userVillagers = useSelector((state) => state.newVillagers.entities);
   return (
     <>
@@ -12,7 +11,7 @@ export default function UserVillagerCard() {
         Meet user created Villagers!
       </h1>
       <Link to={"/add_villager"}>
-        <Button > Add Villager </Button>
+        <Button> Add Villager </Button>
       </Link>
       <Carousel>
         {userVillagers.map((data) => (

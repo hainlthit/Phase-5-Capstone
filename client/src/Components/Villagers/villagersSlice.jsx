@@ -1,11 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { client } from "../../api/client"
 
 export const fetchVillagers = createAsyncThunk(
   "villagers/fetchVillagers",
-  () => {
-    return fetch("https://acnhapi.com/v1a/villagers")
-      .then((response) => response.json())
-      .then((data) => data);
+  async () => {
+    const response = await client.get("https://acnhapi.com/v1a/villagers");
+    return response.data;
   }
 );
 

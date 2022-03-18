@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { newVillagerAdded } from "./newVillagersSlice";
+import { addNewVillagers } from "./newVillagersSlice";
 import { useNavigate } from "react-router-dom";
 
 export default function NewVillagerForm({ username }) {
@@ -45,16 +45,17 @@ export default function NewVillagerForm({ username }) {
       likes: 0,
       created_by: username,
     };
-    fetch("/villagers", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(newVillagerObj),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        // dispatch(newVillagerAdded(data));
-      });
+    // fetch("/villagers", {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify(newVillagerObj),
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     console.log(data);
+
+    //   });
+    dispatch(addNewVillagers(newVillagerObj));
     console.log(newVillagerObj);
     setNewName("");
     setNewSpecies("");

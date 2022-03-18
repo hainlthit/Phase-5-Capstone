@@ -1,34 +1,25 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { client } from "../../api/client"
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import VillagerDataService from "../../services/villagerServices";
 
 export const fetchVillagers = createAsyncThunk(
-  "villagers/fetchVillagers",
+  "villagers/fetchData",
   async () => {
-    const response = await client.get("https://acnhapi.com/v1a/villagers");
-    return response.data;
+    const res = await VillagerDataService.getAll();
+    return res.data;
   }
 );
 
 const villagersSlice = createSlice({
   name: "villagers",
   initialState: {
-    entities: [], 
-    status: "idle", 
-  },
-  reducers: {
-
+    entities: [],
   },
   extraReducers: {
-    [fetchVillagers.pending](state) {
-      state.status = "loading";
-    },
-    [fetchVillagers.fulfilled](state, action) {
-      state.entities = action.payload;
-      state.status = "idle";
+    [fetchVillagers.fulfilled]: (state, action) => {
+      return [...action.payload];
     },
   },
 });
 
-
-
 export default villagersSlice.reducer;
+

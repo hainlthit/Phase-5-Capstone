@@ -102,40 +102,4 @@ export default function VillagerCard() {
   );
 }
 
-{
-  /* <h1 className="reviews-h1">Carousel Test</h1>
-{flipCard ? (
-  <div class="card">
-    <img
-      class="card-img-top"
-      src="https://acnhapi.com/v1/icons/villagers/1"
-      alt="Cyrano"
-    ></img>
-    <div class="card-body">
-      <h5 class="card-title">Cyrano</h5>
-    </div>
-    <div class="card-body">
-      <Button onClick={flipHandler} aria-pressed="false" >See more details</Button>
-    </div>
-  </div>
-) : (
-  <div  class="card">
-    <img
-      class="card-img-top"
-      src="https://acnhapi.com/v1/images/villagers/1"
-      alt="Cyrano"
-    ></img>
-    <div class="card-body">
-      <h5 class="card-title">Cyrano</h5>
-    </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">birthday: 9/3</li>
-      <li class="list-group-item">species: Anteater</li>
-      <li class="list-group-item">personality: Cranky</li>
-    </ul>
-    <div class="card-body">
-      <Button aria-pressed="false" onClick={flipHandler} >Return</Button>
-    </div>
-  </div>
-)} */
-}
+

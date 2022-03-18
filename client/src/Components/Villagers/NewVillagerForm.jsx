@@ -45,16 +45,6 @@ export default function NewVillagerForm({ username }) {
       likes: 0,
       created_by: username,
     };
-    // fetch("/villagers", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify(newVillagerObj),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     console.log(data);
-
-    //   });
     dispatch(addNewVillagers(newVillagerObj));
     console.log(newVillagerObj);
     setNewName("");
@@ -64,6 +54,7 @@ export default function NewVillagerForm({ username }) {
     setNewImage("");
     navigate("/villagers");
   }
+
 
   return (
     <>

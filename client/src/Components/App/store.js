@@ -1,11 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import villagersReducer from "../Villagers/villagersSlice";
+import villagerReducer from "../Villagers/villagersSlice";
 import newVillagersReducer from "../Villagers/newVillagersSlice";
 
 const store = configureStore({
   reducer: {
-    villagers: villagersReducer,
+    villagers: villagerReducer,
     newVillagers: newVillagersReducer,
   },
 });

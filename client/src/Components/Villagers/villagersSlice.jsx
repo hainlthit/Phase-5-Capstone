@@ -1,34 +1,54 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { client } from "../../api/client"
+import {
+  RETRIEVE_VILLAGERS
+} from "../actions/types";
 
-export const fetchVillagers = createAsyncThunk(
-  "villagers/fetchVillagers",
-  async () => {
-    const response = await client.get("https://acnhapi.com/v1a/villagers");
-    return response.data;
+const initialState = [];
+
+function villagerReducer(villagers = initialState, action) {
+  const { type, payload } = action;
+
+  switch (type) {
+    case RETRIEVE_VILLAGERS:
+      return payload;
+
+    default:
+      return villagers;
   }
-);
+};
 
-const villagersSlice = createSlice({
-  name: "villagers",
-  initialState: {
-    entities: [], 
-    status: "idle", 
-  },
-  reducers: {
+export default villagerReducer;
 
-  },
-  extraReducers: {
-    [fetchVillagers.pending](state) {
-      state.status = "loading";
-    },
-    [fetchVillagers.fulfilled](state, action) {
-      state.entities = action.payload;
-      state.status = "idle";
-    },
-  },
-});
+// import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+// import { client } from "../../api/client"
+
+// export const fetchVillagers = createAsyncThunk(
+//   "villagers/fetchVillagers",
+//   async () => {
+//     const response = await client.get("https://acnhapi.com/v1a/villagers");
+//     return response.data;
+//   }
+// );
+
+// const villagersSlice = createSlice({
+//   name: "villagers",
+//   initialState: {
+//     entities: [], 
+//     status: "idle", 
+//   },
+//   reducers: {
+
+//   },
+//   extraReducers: {
+//     [fetchVillagers.pending](state) {
+//       state.status = "loading";
+//     },
+//     [fetchVillagers.fulfilled](state, action) {
+//       state.entities = action.payload;
+//       state.status = "idle";
+//     },
+//   },
+// });
 
 
 
-export default villagersSlice.reducer;
+// export default villagersSlice.reducer;

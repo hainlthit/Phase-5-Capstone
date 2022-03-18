@@ -10,7 +10,6 @@ export default function NewVillagerForm({ username }) {
   const [newPersonality, setNewPersonality] = useState("");
   const [newImage, setNewImage] = useState("");
   const navigate = useNavigate();
-  
 
   function handleSetNewName(e) {
     setNewName(e.target.value);
@@ -46,14 +45,23 @@ export default function NewVillagerForm({ username }) {
       likes: 0,
       created_by: username,
     };
-    dispatch(newVillagerAdded(newVillagerObj))
+    fetch("/villagers", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newVillagerObj),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        // dispatch(newVillagerAdded(data));
+      });
     console.log(newVillagerObj);
-    setNewName("")
-    setNewSpecies("")
-    setNewBirthday("")
-    setNewPersonality("")
-    setNewImage("")
-    navigate("/villagers")
+    setNewName("");
+    setNewSpecies("");
+    setNewBirthday("");
+    setNewPersonality("");
+    setNewImage("");
+    navigate("/villagers");
   }
 
   return (

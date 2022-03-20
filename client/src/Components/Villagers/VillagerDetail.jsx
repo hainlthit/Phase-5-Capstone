@@ -2,9 +2,11 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { deleteNewVillager, newVillagerRemoved } from "./newVillagersSlice";
+import { deleteNewVillager } from "./newVillagersSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import VillagerEdit from "../Villagers/VillagerEdit.jsx";
+
 // import newVillagerDataService from "../../services/newVillagerServices";
 
 function VillagerDetail() {
@@ -24,32 +26,30 @@ function VillagerDetail() {
 
   console.log(currentVillager);
 
-  
-//   function handleDelete() {
-//     dispatch(deleteVillager(id))
-//       .unwrap()
-//       .then(() => {
-//         navigate("/villagers");
-//       })
-//       .catch((e) => {
-//         console.log(e);
-//       });
-//   }
-
-// function handleDelete(){
-//     fetch(`/villagers/${id}`, { 
-//       method: 'DELETE',
-//     })
-//     .then((r) => r.json())
-//     .then((data) => dispatch(newVillagerRemoved(data)))
-//   }
-
-  function deleteVillager(id) {
-    dispatch(deleteNewVillager(currentVillager.id));
+  function handleDelete() {
+    dispatch(deleteNewVillager(currentVillager.id))
+      .unwrap()
+      .then(() => {
+        navigate("/villagers");
+      })
+      .catch((e) => {
+        console.log(e);
+      });
   }
 
+  // function handleDelete(){
+  //     fetch(`/villagers/${id}`, {
+  //       method: 'DELETE',
+  //     })
+  //     .then((r) => r.json())
+  //     .then((data) => dispatch(newVillagerRemoved(data)))
+  //   }
 
-  console.log(id)
+  //   function deleteVillager(id) {
+  //     dispatch(deleteNewVillager(currentVillager.id));
+  //   }
+
+  console.log(id);
 
   return (
     <div class="card">
@@ -80,9 +80,60 @@ function VillagerDetail() {
           Created By: {currentVillager.created_by}
         </li>
         <li class="list-group-item" style={{ textAlign: "center" }}>
-          <button  onClick={deleteVillager} style={{ textAlign: "center" }}>
+          <button onClick={handleDelete} style={{ textAlign: "center" }}>
             DELETUS
           </button>
+        </li>
+        <li>
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+          >
+            EDITS
+          </button>
+          <div
+            class="modal fade"
+            id="exampleModal"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">
+                    Modal title
+                  </h5>
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <VillagerEdit />
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                  <button type="button" class="btn btn-primary">
+                    Save changes
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </li>
         <li class="list-group-item" style={{ textAlign: "center" }}>
           <Link to={`/villagers`}>

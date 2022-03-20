@@ -3,6 +3,7 @@ import { Carousel, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
+
 function UserVillagerCard() {
   const userVillagers = useSelector((state) => state.newVillagers);
 

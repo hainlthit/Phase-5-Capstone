@@ -12,6 +12,7 @@ import { fetchNewVillagers } from "../Villagers/newVillagersSlice";
 import VillagerDetail from "../Villagers/VillagerDetail.jsx";
 
 
+
 function App() {
   const [user, setUser] = useState(null);
   console.log(user);

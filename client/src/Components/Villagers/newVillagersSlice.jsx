@@ -1,7 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import newVillagerDataService  from "../../services/newVillagerServices";
+import newVillagerDataService from "../../services/newVillagerServices";
 
-const initialState = [];
+const initialState = {
+  entities: [],
+};
 
 export const addNewVillagers = createAsyncThunk(
   "newVillager/create",
@@ -27,11 +29,24 @@ export const updateVillagers = createAsyncThunk(
   }
 );
 
-export const deleteVillager = createAsyncThunk(
-  "newVillagers/newVillagerDeleted",
-  async ({ id }) => {
-    await newVillagerDataService.remove(id);
-    return {id};
+// export const deleteVillager = createAsyncThunk(
+//   "newVillagers/newVillagerDeleted",
+//   async ({ villagerId }) => {
+//     await newVillagerDataService.remove(villagerId);
+//     return villagerId;
+//   }
+// );
+
+export const deleteNewVillager = createAsyncThunk(
+  "newVillagers/deleteNewVillager",
+  async (currentVillagerId) => {
+    fetch(`/villagers/${currentVillagerId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    return currentVillagerId;
   }
 );
 
@@ -54,12 +69,7 @@ export const deleteVillager = createAsyncThunk(
 const newVillagersSlice = createSlice({
   name: "newVillagers",
   initialState,
-  reducers: {
-    newVillagerRemoved(state, action) {
-      const index = state.findIndex((r) => r.id === action.payload);
-      state.splice(index, 1);
-    },
-  },
+  reducers: {},
 
   extraReducers: {
     [addNewVillagers.fulfilled]: (state, action) => {
@@ -69,15 +79,18 @@ const newVillagersSlice = createSlice({
       return [...action.payload];
     },
     [updateVillagers.fulfilled]: (state, action) => {
-      const index = state.findIndex(tutorial => tutorial.id === action.payload.id);
+      const index = state.findIndex(
+        (tutorial) => tutorial.id === action.payload.id
+      );
       state[index] = {
         ...state[index],
         ...action.payload,
       };
     },
-    [deleteVillager.fulfilled]: (state, action) => {
-      const index = state.entities.findIndex(({ id }) => id === action.payload.id);
-      state.entities.splice(index, 1);
+    [deleteNewVillager.fulfilled](state, action) {
+      state = state.filter(
+        (villager) => villager.id !== action.payload
+      );
     },
     // [deleteAllTutorials.fulfilled]: (state, action) => {
     //   return [];
@@ -89,8 +102,7 @@ const newVillagersSlice = createSlice({
 });
 
 export const { newVillagerRemoved } = newVillagersSlice.actions;
-export default newVillagersSlice.reducer
-
+export default newVillagersSlice.reducer;
 
 // import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 // import { client } from "../../api/client"
@@ -111,7 +123,6 @@ export default newVillagersSlice.reducer
 //   }
 // );
 
-
 // const newVillagersSlice = createSlice({
 //   name: "newVillagers",
 //   initialState: {
@@ -128,7 +139,7 @@ export default newVillagersSlice.reducer
 //       state.entities = action.payload;
 //       state.status = "idle";
 //     },
-    
+
 //   },
 // });
 // export const { newVillagerRemoved } = newVillagersSlice.actions;

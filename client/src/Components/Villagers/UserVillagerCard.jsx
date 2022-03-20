@@ -1,20 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Carousel, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-
+import { useSelector } from "react-redux";
 
 function UserVillagerCard() {
-
-
-
-
-
-
-
-
-;
-
   const userVillagers = useSelector((state) => state.newVillagers);
 
   return (
@@ -53,11 +42,14 @@ function UserVillagerCard() {
                   Created By: {data.created_by}
                 </li>
                 <li class="list-group-item" style={{ textAlign: "center" }}>
-                <Link to={`/villagers/${data.id}`}>
-                  <Button aria-pressed="false" style={{ textAlign: "center" }}>
-                    More Info
-                  </Button>
-                </Link>
+                  <Link to={`/villagers/${data.id}`}>
+                    <Button
+                      aria-pressed="false"
+                      style={{ textAlign: "center" }}
+                    >
+                      More Info
+                    </Button>
+                  </Link>
                 </li>
                 <li
                   class="list-group-item"
@@ -70,6 +62,6 @@ function UserVillagerCard() {
       </Carousel>
     </>
   );
-};
+}
 
 export default UserVillagerCard;

@@ -23,7 +23,7 @@ class VillagersController < ApplicationController
 
     def destroy
         villager = Villager.find(params[:id])
-        Villager.delete
+        villager.destroy
         render json: {}
     end 
 

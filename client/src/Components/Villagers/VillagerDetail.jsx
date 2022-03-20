@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { deleteVillager, newVillagerRemoved } from "./newVillagersSlice";
+import { deleteNewVillager, newVillagerRemoved } from "./newVillagersSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 // import newVillagerDataService from "../../services/newVillagerServices";
@@ -36,13 +36,18 @@ function VillagerDetail() {
 //       });
 //   }
 
-function handleDelete(){
-    fetch(`/villagers/${id}`, { 
-      method: 'DELETE',
-    })
-    .then((r) => r.json())
-    .then((data) => dispatch(newVillagerRemoved(data)))
+// function handleDelete(){
+//     fetch(`/villagers/${id}`, { 
+//       method: 'DELETE',
+//     })
+//     .then((r) => r.json())
+//     .then((data) => dispatch(newVillagerRemoved(data)))
+//   }
+
+  function deleteVillager(id) {
+    dispatch(deleteNewVillager(currentVillager.id));
   }
+
 
   console.log(id)
 
@@ -75,7 +80,7 @@ function handleDelete(){
           Created By: {currentVillager.created_by}
         </li>
         <li class="list-group-item" style={{ textAlign: "center" }}>
-          <button  onClick={handleDelete} style={{ textAlign: "center" }}>
+          <button  onClick={deleteVillager} style={{ textAlign: "center" }}>
             DELETUS
           </button>
         </li>

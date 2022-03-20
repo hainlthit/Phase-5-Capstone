@@ -17,14 +17,14 @@ class VillagersController < ApplicationController
 
     def update 
         villager = Villager.find(params[:id])
-        villager.update!(spell_params)
+        villager.update!(villager_params)
         render json: villager, status: :ok
     end 
 
     def destroy
         villager = Villager.find(params[:id])
         Villager.delete
-        render json: {} 
+        render json: {}
     end 
 
     private

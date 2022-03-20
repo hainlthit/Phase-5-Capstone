@@ -31,7 +31,7 @@ export const deleteVillager = createAsyncThunk(
   "newVillagers/newVillagerDeleted",
   async ({ id }) => {
     await newVillagerDataService.remove(id);
-    return { id };
+    return {id};
   }
 );
 
@@ -54,6 +54,13 @@ export const deleteVillager = createAsyncThunk(
 const newVillagersSlice = createSlice({
   name: "newVillagers",
   initialState,
+  reducers: {
+    newVillagerRemoved(state, action) {
+      const index = state.findIndex((r) => r.id === action.payload);
+      state.splice(index, 1);
+    },
+  },
+
   extraReducers: {
     [addNewVillagers.fulfilled]: (state, action) => {
       state.push(action.payload);
@@ -69,8 +76,8 @@ const newVillagersSlice = createSlice({
       };
     },
     [deleteVillager.fulfilled]: (state, action) => {
-      let index = state.findIndex(({ id }) => id === action.payload.id);
-      state.splice(index, 1);
+      const index = state.entities.findIndex(({ id }) => id === action.payload.id);
+      state.entities.splice(index, 1);
     },
     // [deleteAllTutorials.fulfilled]: (state, action) => {
     //   return [];
@@ -81,6 +88,7 @@ const newVillagersSlice = createSlice({
   },
 });
 
+export const { newVillagerRemoved } = newVillagersSlice.actions;
 export default newVillagersSlice.reducer
 
 
@@ -123,6 +131,6 @@ export default newVillagersSlice.reducer
     
 //   },
 // });
-// export const { newVillagerAdded } = newVillagersSlice.actions;
+// export const { newVillagerRemoved } = newVillagersSlice.actions;
 
 // export default newVillagersSlice.reducer;

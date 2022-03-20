@@ -9,6 +9,7 @@ import NewVillagerForm from "../Villagers/NewVillagerForm.jsx"
 import { useDispatch, useSelector } from "react-redux";
 import { fetchVillagers } from "../Villagers/villagersSlice";
 import { fetchNewVillagers } from "../Villagers/newVillagersSlice";
+import VillagerDetail from "../Villagers/VillagerDetail.jsx";
 
 
 function App() {
@@ -29,24 +30,6 @@ function App() {
     dispatch(fetchNewVillagers());
   }, [dispatch]);
 
-  // const villagerData = useSelector((state) => state.newVillagers);
-  // console.log(villagerData)
-
-
-
-  // function handlePost(obj){
-  //   fetch('/villagers',{
-  //     method:'POST',
-  //     headers: {'Content-Type': 'application/json'},
-  //     body:JSON.stringify(obj)
-  //   })
-  //   .then(res => res.json())
-  //   .then(data => {
-  //     console.log(data)
-  //       setUserVillagers([...userVillagers, data])
-  //     }
-  //   )
-  // }
 
   function handleLogOutClick() {
     fetch("/logout", {
@@ -81,6 +64,7 @@ function App() {
         <Route exact path="/home" element={<Home />} />
         <Route exact path="/villagers" element={<VillagerContainer  />} />
         <Route exact path="/add_villager" element={<NewVillagerForm  username={user.username} />} />
+        <Route exact path="/villagers/:id" element={<VillagerDetail />} />
         {/* <Route exact path="/spells" element={<Spells />} /> */}
         {/* <Route exact path="/skills" element={<Skills />} /> */}
         {/* <Route exact path="/spells/:id" element={<SpellDetail />} /> */}

@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { addNewVillagers } from "./newVillagersSlice";
 import { useNavigate } from "react-router-dom";
 
-export default function VillagerEdit({ username }) {
+export default function VillagerEdit({ username, currentVillager }) {
   const [newName, setNewName] = useState("");
   const [newSpecies, setNewSpecies] = useState("");
   const [newBirthday, setNewBirthday] = useState("");
@@ -65,7 +65,7 @@ export default function VillagerEdit({ username }) {
     <>
       <img
         class="img-fluid"
-        src="https://cdn.mos.cms.futurecdn.net/Dr5tJTKgmVbckAUXFKMeCJ.jpg"
+        src={currentVillager.image}
         alt="new villager form image"
       />
 
@@ -78,7 +78,7 @@ export default function VillagerEdit({ username }) {
             class="form-control"
             type="string"
             id="exampleFormControlInput1"
-            placeholder="Your new Friend's Name"
+            placeholder={currentVillager.name}
             value={newName}
             onChange={handleSetNewName}
           />
@@ -89,7 +89,7 @@ export default function VillagerEdit({ username }) {
             class="form-control"
             type="string"
             id="exampleFormControlInput2"
-            placeholder="What is their Birthday?"
+            placeholder={currentVillager.birthday}
             value={newBirthday}
             onChange={handleSetNewBirthday}
           />
@@ -100,7 +100,7 @@ export default function VillagerEdit({ username }) {
             class="form-control"
             type="string"
             id="exampleFormControlInput3"
-            placeholder="Main Personality Trait"
+            placeholder={currentVillager.personality}
             value={newPersonality}
             onChange={handleSetNewPersonality}
           />
@@ -111,20 +111,9 @@ export default function VillagerEdit({ username }) {
             class="form-control"
             type="string"
             id="exampleFormControlInput4"
-            placeholder="Identity"
+            placeholder={currentVillager.species}
             value={newSpecies}
             onChange={handleSetNewSpecies}
-          />
-        </div>
-        <div class="form-group">
-          <label for="exampleFormControlInput5">Image Link</label>
-          <input
-            class="form-control"
-            type="string"
-            id="exampleFormControlInput5"
-            placeholder="Share a pic!"
-            value={newImage}
-            onChange={handleSetNewImage}
           />
         </div>
         <div type="submit" style={{ textAlign: "center" }}>

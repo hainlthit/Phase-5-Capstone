@@ -47,6 +47,7 @@ export default function VillagerEdit({ username, currentVillager }) {
     .unwrap()
     .then(response => {
       console.log(response);
+      window.location.replace("/villagers");
     })
     .catch(e => {
       console.log(e);

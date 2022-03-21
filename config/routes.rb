@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  resources :visitors
+  resources :islands
   resources :villagers, only: [:index, :show, :create, :update, :destroy]
   post "/signup", to: "users#create"
   get "/me", to: "users#show"

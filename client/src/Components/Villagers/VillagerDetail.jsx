@@ -47,6 +47,7 @@ function VillagerDetail() {
 
     function deleteVillager(id) {
       dispatch(deleteNewVillager(currentVillager.id));
+      navigate("/villagers" , {replace: true});
     }
 
   console.log(id);

@@ -117,7 +117,7 @@ function VillagerDetail() {
                   </button>
                 </div>
                 <div class="modal-body">
-                    <VillagerEdit currentVillager={currentVillager} />
+                  <VillagerEdit currentVillager={currentVillager} />
                 </div>
                 <div class="modal-footer">
                   <button
@@ -136,7 +136,7 @@ function VillagerDetail() {
           </div>
         </li>
         <li class="list-group-item" style={{ textAlign: "center" }}>
-          <Link to={`/villagers`}>
+          <Link to={"/villagers"}>
             <button aria-pressed="false" style={{ textAlign: "center" }}>
               Back
             </button>

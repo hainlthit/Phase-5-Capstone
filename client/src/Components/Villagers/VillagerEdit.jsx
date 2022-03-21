@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addNewVillagers } from "./newVillagersSlice";
+import { updateNewVillagers } from "./newVillagersSlice";
 import { useNavigate } from "react-router-dom";
 
 export default function VillagerEdit({ username, currentVillager }) {
@@ -8,7 +8,6 @@ export default function VillagerEdit({ username, currentVillager }) {
   const [newSpecies, setNewSpecies] = useState("");
   const [newBirthday, setNewBirthday] = useState("");
   const [newPersonality, setNewPersonality] = useState("");
-  const [newImage, setNewImage] = useState("");
   const navigate = useNavigate();
 
   function handleSetNewName(e) {
@@ -27,25 +26,20 @@ export default function VillagerEdit({ username, currentVillager }) {
     setNewPersonality(e.target.value);
   }
 
-  function handleSetNewImage(e) {
-    setNewImage(e.target.value);
-  }
-
   const dispatch = useDispatch();
 
   function handleSubmit(e) {
     e.preventDefault();
 
+    console.log(currentVillager.id)
     const newVillagerObj = {
+      id: currentVillager.id,
       name: newName,
       species: newSpecies,
       birthday: newBirthday,
       personality: newPersonality,
-      image: newImage,
-      likes: 0,
-      created_by: username,
     };
-    dispatch(addNewVillagers(newVillagerObj))
+    dispatch(updateNewVillagers(newVillagerObj))
       .unwrap()
       .then((data) => {
         console.log(data);
@@ -57,8 +51,6 @@ export default function VillagerEdit({ username, currentVillager }) {
     setNewSpecies("");
     setNewBirthday("");
     setNewPersonality("");
-    setNewImage("");
-    navigate("/villagers");
   }
 
   return (
@@ -117,7 +109,9 @@ export default function VillagerEdit({ username, currentVillager }) {
           />
         </div>
         <div type="submit" style={{ textAlign: "center" }}>
-          <button className="form-input">New Villager</button>
+          <button onClick={handleSubmit} className="form-input">
+            Save Edits
+          </button>
         </div>
       </form>
     </>

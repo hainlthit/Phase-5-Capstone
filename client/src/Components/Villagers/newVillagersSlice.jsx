@@ -32,7 +32,7 @@ export const fetchNewVillagers = createAsyncThunk(
 export const updateNewVillagers = createAsyncThunk(
   "newVillagers/updateNewVillagers",
   async (newVillager) => {
-    return fetch(`/comments/${newVillager['id']}`, {
+    return fetch(`/villagers/${newVillager.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -93,7 +93,7 @@ const newVillagersSlice = createSlice({
     },
     [updateNewVillagers.fulfilled]: (state, action) => {
       const index = state.findIndex(
-        (tutorial) => tutorial.id === action.payload.id
+        (villager) => villager.id === action.payload.id
       );
       state[index] = {
         ...state[index],
@@ -105,12 +105,12 @@ const newVillagersSlice = createSlice({
       state.splice(index, 1);
     },
 
-    [updateNewVillagers.fulfilled](state, action) {
-      state.entities = state.entities.filter(
-        (villager) => villager.id !== action.payload['id']
-      )
-      state.entities = [...state.entities, action.payload];
-    },
+    // [updateNewVillagers.fulfilled](state, action) {
+    //   state = state.filter(
+    //     (villager) => villager.id !== action.payload["id"]
+    //   );
+    //   state = [...state, action.payload];
+    // },
     // [deleteAllTutorials.fulfilled]: (state, action) => {
     //   return [];
     // },
@@ -119,7 +119,6 @@ const newVillagersSlice = createSlice({
     // },
   },
 });
-
 
 export default newVillagersSlice.reducer;
 

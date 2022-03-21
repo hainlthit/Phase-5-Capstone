@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { updateNewVillagers } from "./newVillagersSlice";
 import { useNavigate } from "react-router-dom";
 
-export default function VillagerEdit({ username, currentVillager }) {
+export default function VillagerEdit({ currentVillager }) {
   const [newName, setNewName] = useState("");
   const [newSpecies, setNewSpecies] = useState("");
   const [newBirthday, setNewBirthday] = useState("");
@@ -31,27 +31,25 @@ export default function VillagerEdit({ username, currentVillager }) {
   function handleSubmit(e) {
     e.preventDefault();
 
-    console.log(currentVillager.id)
-   
-    const newVillagerObj = {
-      id: currentVillager.id,
-      name: newName,
-      species: newSpecies,
-      birthday: newBirthday,
-      personality: newPersonality,
-    };
-    dispatch(updateNewVillagers({id: currentVillager.id,    name: newName,
+    console.log(currentVillager.id);
+
+    dispatch(
+      updateNewVillagers({
+        id: currentVillager.id,
+        name: newName,
         species: newSpecies,
         birthday: newBirthday,
-        personality: newPersonality}))
-    .unwrap()
-    .then(response => {
-      console.log(response);
-      window.location.replace("/villagers");
-    })
-    .catch(e => {
-      console.log(e);
-    });
+        personality: newPersonality,
+      })
+    )
+      .unwrap()
+      .then((response) => {
+        console.log(response);
+        navigate("/villagers");
+      })
+      .catch((e) => {
+        console.log(e);
+      });
     setNewName("");
     setNewSpecies("");
     setNewBirthday("");
@@ -114,9 +112,7 @@ export default function VillagerEdit({ username, currentVillager }) {
           />
         </div>
         <div type="submit" style={{ textAlign: "center" }}>
-          <button className="form-input">
-            Save Edits
-          </button>
+          <button className="form-input">Save Edits</button>
         </div>
       </form>
     </>

@@ -26,16 +26,16 @@ function VillagerDetail() {
 
   console.log(currentVillager);
 
-  function handleDelete() {
-    dispatch(deleteNewVillager(currentVillager.id))
-      .unwrap()
-      .then(() => {
-        navigate("/villagers");
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  }
+  // function handleDelete() {
+  //   dispatch(deleteNewVillager(currentVillager.id))
+  //     .unwrap()
+  //     .then(() => {
+  //       navigate("/villagers");
+  //     })
+  //     .catch((e) => {
+  //       console.log(e);
+  //     });
+  // }
 
   // function handleDelete(){
   //     fetch(`/villagers/${id}`, {
@@ -45,9 +45,9 @@ function VillagerDetail() {
   //     .then((data) => dispatch(newVillagerRemoved(data)))
   //   }
 
-  //   function deleteVillager(id) {
-  //     dispatch(deleteNewVillager(currentVillager.id));
-  //   }
+    function deleteVillager(id) {
+      dispatch(deleteNewVillager(currentVillager.id));
+    }
 
   console.log(id);
 
@@ -80,7 +80,7 @@ function VillagerDetail() {
           Created By: {currentVillager.created_by}
         </li>
         <li class="list-group-item" style={{ textAlign: "center" }}>
-          <button onClick={handleDelete} style={{ textAlign: "center" }}>
+          <button onClick={deleteVillager} style={{ textAlign: "center" }}>
             DELETUS
           </button>
         </li>

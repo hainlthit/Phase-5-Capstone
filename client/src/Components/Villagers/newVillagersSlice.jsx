@@ -42,26 +42,26 @@ export const updateNewVillagers = createAsyncThunk(
   }
 );
 
-export const deleteNewVillager = createAsyncThunk(
-  "newVillagers/newVillagerDeleted",
-  async ({ villagerId }) => {
-    await newVillagerDataService.remove(villagerId);
-    return villagerId;
-  }
-);
-
 // export const deleteNewVillager = createAsyncThunk(
-//   "newVillagers/deleteNewVillager",
-//   async (currentVillagerId) => {
-//     fetch(`/villagers/${currentVillagerId}`, {
-//       method: "DELETE",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//     });
-//     return currentVillagerId;
+//   "newVillagers/newVillagerDeleted",
+//   async ({ villagerId }) => {
+//     await newVillagerDataService.remove(villagerId);
+//     return villagerId;
 //   }
 // );
+
+export const deleteNewVillager = createAsyncThunk(
+  "newVillagers/deleteNewVillager",
+  async (currentVillagerId) => {
+    fetch(`/villagers/${currentVillagerId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    return currentVillagerId;
+  }
+);
 
 // export const deleteAllTutorials = createAsyncThunk(
 //   "tutorials/deleteAll",
@@ -91,26 +91,26 @@ const newVillagersSlice = createSlice({
     [fetchNewVillagers.fulfilled]: (state, action) => {
       return [...action.payload];
     },
-    [updateNewVillagers.fulfilled]: (state, action) => {
-      const index = state.findIndex(
-        (villager) => villager.id === action.payload.id
-      );
-      state[index] = {
-        ...state[index],
-        ...action.payload,
-      };
-    },
+    // [updateNewVillagers.fulfilled]: (state, action) => {
+    //   const index = state.findIndex(
+    //     (villager) => villager.id === action.payload.id
+    //   );
+    //   state[index] = {
+    //     ...state[index],
+    //     ...action.payload,
+    //   };
+    // },
     [deleteNewVillager.fulfilled]: (state, action) => {
       let index = state.findIndex(({ id }) => id === action.payload.id);
       state.splice(index, 1);
     },
 
-    // [updateNewVillagers.fulfilled](state, action) {
-    //   state = state.filter(
-    //     (villager) => villager.id !== action.payload["id"]
-    //   );
-    //   state = [...state, action.payload];
-    // },
+    [updateNewVillagers.fulfilled](state, action) {
+      state = state.filter(
+        (villager) => villager.id !== action.payload.id
+      );
+      state = [...state, action.payload];
+    },
     // [deleteAllTutorials.fulfilled]: (state, action) => {
     //   return [];
     // },

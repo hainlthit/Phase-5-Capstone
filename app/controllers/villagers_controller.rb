@@ -30,7 +30,7 @@ class VillagersController < ApplicationController
     private
 
     def villager_params
-        params.permit(:name, :species, :birthday, :personality, :image, :likes, :created_by)
+        params.permit(:name, :species, :birthday, :personality, :image, :likes, :created_by, :id)
     end
 
 end

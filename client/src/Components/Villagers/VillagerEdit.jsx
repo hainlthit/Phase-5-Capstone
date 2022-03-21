@@ -32,6 +32,7 @@ export default function VillagerEdit({ username, currentVillager }) {
     e.preventDefault();
 
     console.log(currentVillager.id)
+   
     const newVillagerObj = {
       id: currentVillager.id,
       name: newName,
@@ -39,14 +40,17 @@ export default function VillagerEdit({ username, currentVillager }) {
       birthday: newBirthday,
       personality: newPersonality,
     };
-    dispatch(updateNewVillagers(newVillagerObj))
-      .unwrap()
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
+    dispatch(updateNewVillagers({id: currentVillager.id,    name: newName,
+        species: newSpecies,
+        birthday: newBirthday,
+        personality: newPersonality}))
+    .unwrap()
+    .then(response => {
+      console.log(response);
+    })
+    .catch(e => {
+      console.log(e);
+    });
     setNewName("");
     setNewSpecies("");
     setNewBirthday("");
@@ -109,7 +113,7 @@ export default function VillagerEdit({ username, currentVillager }) {
           />
         </div>
         <div type="submit" style={{ textAlign: "center" }}>
-          <button onClick={handleSubmit} className="form-input">
+          <button className="form-input">
             Save Edits
           </button>
         </div>

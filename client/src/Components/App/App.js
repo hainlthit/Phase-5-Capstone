@@ -10,6 +10,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchVillagers } from "../Villagers/villagersSlice";
 import { fetchNewVillagers } from "../Villagers/newVillagersSlice";
 import VillagerDetail from "../Villagers/VillagerDetail.jsx";
+import IslandContainer from "../Islands/IslandContainer.jsx";
+import { fetchIslands } from "../Islands/IslandsSlice";
 
 
 
@@ -22,6 +24,10 @@ function App() {
 
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchIslands());
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(fetchVillagers());
@@ -64,6 +70,7 @@ function App() {
       <Routes>
         <Route exact path="/home" element={<Home />} />
         <Route exact path="/villagers" element={<VillagerContainer  />} />
+        <Route exact path="/islands" element={<IslandContainer />} />
         <Route exact path="/add_villager" element={<NewVillagerForm  username={user.username} />} />
         <Route exact path="/villagers/:id" element={<VillagerDetail />} />
         {/* <Route exact path="/spells" element={<Spells />} /> */}

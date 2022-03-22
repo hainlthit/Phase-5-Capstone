@@ -1,27 +1,30 @@
 import React from "react";
-import { Carousel, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
+import { Carousel } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
-function UserVillagerCard() {
-  const userVillagers = useSelector((state) => state.newVillagers);
+export default function IslandCard() {
+  const islandData = useSelector((state) => state.islands.entities);
+
+  console.log(islandData);
 
   return (
     <>
       <h1 className="reviews-h1" style={{ textAlign: "center" }}>
-        Meet user created Villagers!
+        Visit These Islands
       </h1>
-      <Link to={"/add_villager"}>
+      {/* <Link to={"/add_villager"}>
         <Button> Add Villager </Button>
-      </Link>
+      </Link> */}
       <Carousel>
-        {userVillagers.map((data) => (
+        {islandData.map((data) => (
           <Carousel.Item key={data.id}>
             <div class="card">
               <img
                 class="card-img-top"
-                src={data.image}
-                alt="Character Image"
+                src="https://thumbs.dreamstime.com/b/tropical-island-ocean-palm-trees-volcano-clip-art-illustration-lava-flowing-smoking-95612442.jpg"
+                alt="Island Image"
               ></img>
               <div class="card-body">
                 <h5 class="card-title" style={{ textAlign: "center" }}>
@@ -30,12 +33,22 @@ function UserVillagerCard() {
               </div>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item" style={{ textAlign: "center" }}>
-                  Birthday: {data.birthday}
+                  Visitors: {data.visitors.length}
                 </li>
                 <li class="list-group-item" style={{ textAlign: "center" }}>
-                  Species: {data.species}
+                  List Visitors:{" "}
+                  <ul>
+                    {" "}
+                    {data.villagers.map((villager) => (
+                      <li> {villager.name} </li>
+                    ))}{" "}
+                  </ul>
                 </li>
                 <li class="list-group-item" style={{ textAlign: "center" }}>
+                  Created By: {data.user.username}
+                </li>
+
+                {/* <li class="list-group-item" style={{ textAlign: "center" }}>
                   Personality: {data.personality}
                 </li>
                 <li class="list-group-item" style={{ textAlign: "center" }}>
@@ -53,7 +66,7 @@ function UserVillagerCard() {
                       More Info
                     </Button>
                   </Link>
-                </li>
+                </li> */}
                 <li
                   class="list-group-item"
                   style={{ textAlign: "center" }}
@@ -66,5 +79,3 @@ function UserVillagerCard() {
     </>
   );
 }
-
-export default UserVillagerCard;

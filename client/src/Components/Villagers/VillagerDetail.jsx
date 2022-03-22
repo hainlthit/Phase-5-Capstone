@@ -24,8 +24,6 @@ function VillagerDetail() {
       });
   }, [id]);
 
-  console.log(currentVillager);
-
   // function handleDelete() {
   //   dispatch(deleteNewVillager(currentVillager.id))
   //     .unwrap()
@@ -45,12 +43,16 @@ function VillagerDetail() {
   //     .then((data) => dispatch(newVillagerRemoved(data)))
   //   }
 
-    function deleteVillager(id) {
-      dispatch(deleteNewVillager(currentVillager.id));
-      navigate("/villagers" , {replace: true});
-    }
+  function deleteVillager(id) {
+    dispatch(deleteNewVillager(currentVillager.id));
+    navigate("/villagers");
+  }
 
   console.log(id);
+  console.log(currentVillager.visitors)
+ 
+
+
 
   return (
     <div class="card">
@@ -76,6 +78,9 @@ function VillagerDetail() {
         </li>
         <li class="list-group-item" style={{ textAlign: "center" }}>
           Likes: {currentVillager.likes}
+        </li>
+        <li class="list-group-item" style={{ textAlign: "center" }}>
+          Visiting: 
         </li>
         <li class="list-group-item" style={{ textAlign: "center" }}>
           Created By: {currentVillager.created_by}

@@ -36,6 +36,14 @@ function NavBar({ handleLogOutClick, user }) {
               </a>
             </li>
             <li class="nav-item">
+              <a class="nav-link">
+                <NavLink to="/islands" exact>
+                  {" "}
+                  Islands
+                </NavLink>
+              </a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" onClick={handleLogOutClick}>
                 Logout
               </a>

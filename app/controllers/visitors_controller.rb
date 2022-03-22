@@ -5,31 +5,31 @@ class VisitorsController < ApplicationController
     end
 
     def show
-        island = Island.find(params[:id])
-        render json: island, status: :ok
+        visitor = Visitor.find(params[:id])
+        render json: visitor, status: :ok
     end
 
     def create
-        island = Island.create!(island_params)
-        render json: island, status: :created
+        visitor = Visitor.create!(visitor_params)
+        render json: visitor, status: :created
     end
 
     def update 
-        island = Island.find(params[:id])
-        island.update!(island_params)
+        visitor = Visitor.find(params[:id])
+        visitor.update!(visitor_params)
         render json: villager, status: :ok
     end 
 
     def destroy
-        island = Island.find(params[:id])
-        island.destroy
+        visitor = Visitor.find(params[:id])
+        visitor.destroy
         render json: {}
     end 
 
     private
 
-    def island_params
-        params.permit(:name)
+    def visitor_params
+        params.permit(:island_id, :villager_id)
     end
 
 end

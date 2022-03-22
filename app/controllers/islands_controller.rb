@@ -29,7 +29,7 @@ class IslandsController < ApplicationController
     private
 
     def island_params
-        params.permit(:name)
+        params.permit(:name, :user_id)
     end
 
 end

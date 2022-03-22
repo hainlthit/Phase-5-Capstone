@@ -14,11 +14,24 @@ export default function IslandCard() {
       <h1 className="reviews-h1" style={{ textAlign: "center" }}>
         Visit These Islands
       </h1>
-      {/* <Link to={"/add_villager"}>
-        <Button> Add Villager </Button>
-      </Link> */}
+
+      <div class="container" style={{ textAlign: "center" }}>
+        <div class="row">
+          <div class="col">
+            <Link to={"/add_island"}>
+              <Button> Add Island </Button>
+            </Link>
+          </div>
+          <div class="col">
+            <Link to={"/add_visitors"}>
+              <Button> Add Visitors </Button>
+            </Link>
+          </div>
+        </div>
+      </div>
+
       <Carousel>
-        {islandData.map((data) => (
+        {islandData?.map((data) => (
           <Carousel.Item key={data.id}>
             <div class="card">
               <img

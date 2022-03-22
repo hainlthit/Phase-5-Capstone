@@ -1,19 +1,25 @@
+// React Components
 import React, { useEffect, useState } from "react";
-import Login from "../Login/Login";
 import { Routes, Route, useNavigate } from "react-router-dom";
-import NavBar from "../NavBar/NavBar";
 import { Container, Alert } from "react-bootstrap";
-import Home from "../Home/Home";
-import VillagerContainer from "../Villagers/VillagerContainer.jsx";
-import NewVillagerForm from "../Villagers/NewVillagerForm.jsx"
-import { useDispatch, useSelector } from "react-redux";
+
+// Redux
+import { useDispatch } from "react-redux";
 import { fetchVillagers } from "../Villagers/villagersSlice";
 import { fetchNewVillagers } from "../Villagers/newVillagersSlice";
-import VillagerDetail from "../Villagers/VillagerDetail.jsx";
-import IslandContainer from "../Islands/IslandContainer.jsx";
 import { fetchIslands } from "../Islands/IslandsSlice";
+import { fetchVisitors } from "../Visitors/VisitorsSlice";
 
-
+// Components
+import Home from "../Home/Home";
+import NavBar from "../NavBar/NavBar";
+import Login from "../Login/Login";
+import VillagerContainer from "../Villagers/VillagerContainer.jsx";
+import VillagerDetail from "../Villagers/VillagerDetail.jsx";
+import NewVillagerForm from "../Villagers/NewVillagerForm.jsx";
+import IslandContainer from "../Islands/IslandContainer.jsx";
+import IslandForm from "../Islands/IslandForm.jsx";
+import VisitorsForm from "../Visitors/VisitorsForm.jsx";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -21,7 +27,6 @@ function App() {
   const navigate = useNavigate();
   // const [data, setData] = useState('')
   // const [userVillagers, setUserVillagers] = useState("");
-
 
   const dispatch = useDispatch();
 
@@ -37,6 +42,9 @@ function App() {
     dispatch(fetchNewVillagers());
   }, [dispatch]);
 
+  useEffect(() => {
+    dispatch(fetchVisitors());
+  }, [dispatch]);
 
   function handleLogOutClick() {
     fetch("/logout", {
@@ -49,8 +57,6 @@ function App() {
 
     navigate("/home");
   }
-
-
 
   if (!user)
     return (
@@ -69,9 +75,23 @@ function App() {
       <NavBar user={user} handleLogOutClick={handleLogOutClick} />
       <Routes>
         <Route exact path="/home" element={<Home />} />
-        <Route exact path="/villagers" element={<VillagerContainer  />} />
+        <Route exact path="/villagers" element={<VillagerContainer />} />
         <Route exact path="/islands" element={<IslandContainer />} />
-        <Route exact path="/add_villager" element={<NewVillagerForm  username={user.username} />} />
+        <Route
+          exact
+          path="/add_villager"
+          element={<NewVillagerForm username={user.username} />}
+        />
+        <Route
+          exact
+          path="/add_island"
+          element={<IslandForm user={user} />}
+        />
+        <Route
+          exact
+          path="/add_visitors"
+          element={<VisitorsForm />}
+        />
         <Route exact path="/villagers/:id" element={<VillagerDetail />} />
         {/* <Route exact path="/spells" element={<Spells />} /> */}
         {/* <Route exact path="/skills" element={<Skills />} /> */}
@@ -80,6 +100,5 @@ function App() {
     </div>
   );
 }
-
 
 export default App;

@@ -1,9 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-export const fetchIslands = createAsyncThunk(
-  "islands/fetchIslands",
+export const fetchVisitors = createAsyncThunk(
+  "visitors/fetchVisitors",
   async () => {
-    return fetch("/islands")
+    return fetch("/visitors")
     .then((res) => res.json());
   }
 );
@@ -21,10 +21,10 @@ export const fetchIslands = createAsyncThunk(
 //   }
 // );
 
-export const createIsland = createAsyncThunk(
-  "islands/createIsland",
+export const createVisitor = createAsyncThunk(
+  "visitors/createVisitor",
   async (newIslandObj) => {
-    return fetch(`/islands`, {
+    return fetch(`/visitors`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -47,14 +47,14 @@ export const createIsland = createAsyncThunk(
 //   }
 // );
 
-const islandsSlice = createSlice({
-  name: "islands",
+const visitorsSlice = createSlice({
+  name: "visitors",
   initialState: {
     entities: [],
   },
   reducers: {},
   extraReducers: {
-    [fetchIslands.fulfilled](state, action) {
+    [fetchVisitors.fulfilled](state, action) {
       state.entities = action.payload;
     },
     // [deleteComment.fulfilled](state, action) {
@@ -62,7 +62,7 @@ const islandsSlice = createSlice({
     //     (comment) => comment.id !== action.payload
     //   );
     // },
-    [createIsland.fulfilled](state, action) {
+    [createVisitor.fulfilled](state, action) {
       state.entities = [...state.entities, action.payload];
     },
     // [updateComment.fulfilled](state, action) {
@@ -74,4 +74,4 @@ const islandsSlice = createSlice({
   },
 });
 
-export default islandsSlice.reducer;
+export default visitorsSlice.reducer;

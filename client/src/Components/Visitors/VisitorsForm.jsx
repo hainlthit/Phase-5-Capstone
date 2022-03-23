@@ -6,17 +6,12 @@ import { createVisitor } from "./VisitorsSlice";
 export default function VisitorsForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const islandData = useSelector((state) => [...state.islands.entities]);
   const villagerData = useSelector((state) => [...state.newVillagers]);
 
   const [island, setIsland] = useState("");
   const [villager, setVillager] = useState("");
-
-  // useEffect(() => {
-  //     fetch(`http://localhost:9292/venues`)
-  //     .then(r => r.json())
-  //     .then(data => setVenueData(data))
-  // }, [])
 
   const islandOptions = islandData.map(({ id, name }) => (
     <option key={id} value={id}>
@@ -24,12 +19,15 @@ export default function VisitorsForm() {
     </option>
   ));
 
+  console.log(islandData)
+  console.log(villagerData)
 
   const villagerOptions = villagerData.map(({ id, name }) => (
     <option key={id} value={id}>
       {name}
     </option>
   ));
+
 
   function handleIslandSelect(e) {
     setIsland(e.target.value);
@@ -41,12 +39,13 @@ export default function VisitorsForm() {
 
   function handleSubmit(e) {
     e.preventDefault();
-
-    const newVisitorObj = {
-      island_id: island,
-      villager_id: villager,
-    };
-    dispatch(createVisitor(newVisitorObj))
+    dispatch(
+      createVisitor({
+        villager_id: villager,
+        island_id: island,
+        
+      })
+    )
       .unwrap()
       .then((data) => {
         console.log(data);
@@ -54,8 +53,7 @@ export default function VisitorsForm() {
       .catch((e) => {
         console.log(e);
       });
-    navigate("/islands");
-    console.log(newVisitorObj);
+      window.location.reload()
   }
 
   return (
@@ -68,16 +66,12 @@ export default function VisitorsForm() {
       <h1 style={{ textAlign: "center" }}>Visitors Form</h1>
 
       <form onSubmit={handleSubmit}>
-        <label className="input-label">
-          Island:{" "}
-        </label>
+        <label className="input-label">Island: </label>
         <br />
         <select id="venue-data" onChange={handleIslandSelect}>
           {islandOptions}
         </select>
-        <label className="input-label">
-          Villager:{" "}
-        </label>
+        <label className="input-label">Villager: </label>
         <br />
         <select id="venue-data" onChange={handleVillagerSelect}>
           {villagerOptions}

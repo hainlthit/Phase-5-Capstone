@@ -20,6 +20,7 @@ import NewVillagerForm from "../Villagers/NewVillagerForm.jsx";
 import IslandContainer from "../Islands/IslandContainer.jsx";
 import IslandForm from "../Islands/IslandForm.jsx";
 import VisitorsForm from "../Visitors/VisitorsForm.jsx";
+import VisitorsContainer from "../Visitors/VisitorsContainer.jsx";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -77,6 +78,7 @@ function App() {
         <Route exact path="/home" element={<Home />} />
         <Route exact path="/villagers" element={<VillagerContainer />} />
         <Route exact path="/islands" element={<IslandContainer />} />
+        <Route exact path="/visitors" element={<VisitorsContainer />} />
         <Route
           exact
           path="/add_villager"

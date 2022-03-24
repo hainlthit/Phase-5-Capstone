@@ -1,17 +1,29 @@
-import { configureStore } from "@reduxjs/toolkit";
+import {
+  configureStore,
+  combineReducers
+} from "@reduxjs/toolkit";
 
 import villagerReducer from "../Villagers/villagersSlice";
 import newVillagersReducer from "../Villagers/newVillagersSlice";
-import islandsReducer from "../Islands/IslandsSlice"
-import visitorsReducer from "../Visitors/VisitorsSlice"
+import islandsReducer from "../Islands/IslandsSlice";
+import visitorsReducer from "../Visitors/VisitorsSlice";
+import usersReducer from "../Users/UsersSlice";
 
-const store = configureStore({
-  reducer: {
-    villagers: villagerReducer,
-    newVillagers: newVillagersReducer,
-    islands: islandsReducer,
-    visitors: visitorsReducer,
-  },
+const combinedReducer = combineReducers({
+  villagers: villagerReducer,
+  newVillagers: newVillagersReducer,
+  islands: islandsReducer,
+  visitors: visitorsReducer,
+  users: usersReducer,
 });
 
-export default store;
+const rootReducer = (state, action) => {
+  // if (action.type === "users/logout") {
+  //   state = undefined;
+  // }
+  return combinedReducer(state, action);
+};
+
+export default configureStore({
+  reducer: rootReducer,
+});

@@ -37,7 +37,7 @@ export default function IslandCard() {
               <img
                 class="card-img-top"
                 src="https://thumbs.dreamstime.com/b/tropical-island-ocean-palm-trees-volcano-clip-art-illustration-lava-flowing-smoking-95612442.jpg"
-                alt="Island Image"
+                alt="Island"
               ></img>
               <div class="card-body">
                 <h5 class="card-title" style={{ textAlign: "center" }}>

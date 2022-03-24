@@ -16,7 +16,7 @@ export default function VillagerCard() {
     let currentIndex = array.length,  randomIndex;
 
     // While there remain elements to shuffle...
-    while (currentIndex != 0) {
+    while (currentIndex !== 0) {
 
       // Pick a remaining element...
       randomIndex = Math.floor(Math.random() * currentIndex);
@@ -44,7 +44,7 @@ export default function VillagerCard() {
                 <img
                   class="card-img-top"
                   src={data.icon_uri}
-                  alt="Icon Image"
+                  alt="Icon"
                 ></img>
                 <div class="card-body">
                   <h5 class="card-title" style={{ textAlign: "center" }}>
@@ -62,7 +62,7 @@ export default function VillagerCard() {
                 <img
                   class="card-img-top"
                   src={data.image_uri}
-                  alt="Character Image"
+                  alt="Character"
                 ></img>
                 <div class="card-body">
                   <h5 class="card-title" style={{ textAlign: "center" }}>

@@ -9,6 +9,7 @@ import { fetchVillagers } from "../Villagers/villagersSlice";
 import { fetchNewVillagers } from "../Villagers/newVillagersSlice";
 import { fetchIslands } from "../Islands/IslandsSlice";
 import { fetchVisitors } from "../Visitors/VisitorsSlice";
+import { fetchUsers, logout } from "../Users/UsersSlice";
 
 // Components
 import Home from "../Home/Home";
@@ -47,12 +48,17 @@ function App() {
     dispatch(fetchVisitors());
   }, [dispatch]);
 
+  useEffect(() => {
+    dispatch(fetchUsers());
+  }, [dispatch]);
+
   function handleLogOutClick() {
     fetch("/logout", {
       method: "DELETE",
     }).then((r) => {
       if (r.ok) {
         setUser(null);
+        dispatch(logout());
       }
     });
 
@@ -76,13 +82,13 @@ function App() {
       <NavBar user={user} handleLogOutClick={handleLogOutClick} />
       <Routes>
         <Route exact path="/home" element={<Home />} />
-        <Route exact path="/villagers" element={<VillagerContainer />} />
+        <Route exact path="/villagers" element={<VillagerContainer  />} />
         <Route exact path="/islands" element={<IslandContainer />} />
         <Route exact path="/visitors" element={<VisitorsContainer />} />
         <Route
           exact
           path="/add_villager"
-          element={<NewVillagerForm username={user.username} />}
+          element={<NewVillagerForm  />}
         />
         <Route
           exact
@@ -94,7 +100,7 @@ function App() {
           path="/add_visitors"
           element={<VisitorsForm />}
         />
-        <Route exact path="/villagers/:id" element={<VillagerDetail />} />
+        <Route exact path="/villagers/:id" element={<VillagerDetail user={user} />} />
         {/* <Route exact path="/spells" element={<Spells />} /> */}
         {/* <Route exact path="/skills" element={<Skills />} /> */}
         {/* <Route exact path="/spells/:id" element={<SpellDetail />} /> */}

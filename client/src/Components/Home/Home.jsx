@@ -7,7 +7,7 @@ export default function Home() {
       <img
         class="img-fluid"
         src="https://static1.srcdn.com/wordpress/wp-content/uploads/2020/04/Animal-Crossing-New-Horizons-Scariest-Creepy-Villagers.jpg"
-        alt="home page image"
+        alt="home page"
       />
     </>
   );

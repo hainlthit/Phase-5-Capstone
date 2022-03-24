@@ -1,15 +1,19 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addNewVillagers } from "./newVillagersSlice";
 import { useNavigate } from "react-router-dom";
 
-export default function NewVillagerForm({ username }) {
+export default function NewVillagerForm() {
   const [newName, setNewName] = useState("");
   const [newSpecies, setNewSpecies] = useState("");
   const [newBirthday, setNewBirthday] = useState("");
   const [newPersonality, setNewPersonality] = useState("");
   const [newImage, setNewImage] = useState("");
   const navigate = useNavigate();
+
+  const users = useSelector((state) => state.users.entities);
+
+  console.log(users.username)
 
   function handleSetNewName(e) {
     setNewName(e.target.value);
@@ -43,7 +47,7 @@ export default function NewVillagerForm({ username }) {
       personality: newPersonality,
       image: newImage,
       likes: 0,
-      created_by: username,
+      created_by: users.username,
     };
     dispatch(addNewVillagers(newVillagerObj))
       .unwrap()
@@ -66,7 +70,7 @@ export default function NewVillagerForm({ username }) {
       <img
         class="img-fluid"
         src="https://cdn.mos.cms.futurecdn.net/Dr5tJTKgmVbckAUXFKMeCJ.jpg"
-        alt="new villager form image"
+        alt="new villager form"
       />
 
       <h1 style={{ textAlign: "center" }}>NewVillagerForm</h1>

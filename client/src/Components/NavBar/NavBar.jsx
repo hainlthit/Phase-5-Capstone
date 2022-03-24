@@ -5,7 +5,7 @@ function NavBar({ handleLogOutClick, user }) {
   return (
     <nav class="navbar navbar-expand-lg navbar navbar navbar-light">
       <div class="container-fluid">
-        <a class="navbar-brand">Villagrr</a>
+        <p class="navbar-brand" >Villagrr</p>
         <button
           class="navbar-toggler"
           type="button"
@@ -20,41 +20,41 @@ function NavBar({ handleLogOutClick, user }) {
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link">
+              <p class="nav-link">
                 <NavLink to="/home" exact>
                   {" "}
                   Home
                 </NavLink>
-              </a>
+              </p>
             </li>
             <li class="nav-item">
-              <a class="nav-link">
+              <p class="nav-link">
                 <NavLink to="/villagers" exact>
                   {" "}
                   Villagers
                 </NavLink>
-              </a>
+              </p>
             </li>
             <li class="nav-item">
-              <a class="nav-link">
+              <p class="nav-link">
                 <NavLink to="/islands" exact>
                   {" "}
                   Islands
                 </NavLink>
-              </a>
+              </p>
             </li>
             <li class="nav-item">
-              <a class="nav-link">
+              <p class="nav-link">
                 <NavLink to="/visitors" exact>
                   {" "}
                   Visitors
                 </NavLink>
-              </a>
+              </p>
             </li>
             <li class="nav-item">
-              <a class="nav-link" onClick={handleLogOutClick}>
+              <p class="nav-link" onClick={handleLogOutClick}>
                 Logout
-              </a>
+              </p>
             </li>
             {/* <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

@@ -16,6 +16,8 @@ function VillagerDetail() {
 
   const { id } = useParams();
 
+  const users = useSelector((state) => state.users.entities);
+
   useEffect(() => {
     fetch(`/villagers/${id}`)
       .then((r) => r.json())
@@ -43,23 +45,20 @@ function VillagerDetail() {
   //     .then((data) => dispatch(newVillagerRemoved(data)))
   //   }
 
-  function deleteVillager(id) {
+  function deleteVillager() {
     dispatch(deleteNewVillager(currentVillager.id));
     navigate("/villagers");
   }
 
   console.log(id);
-  console.log(currentVillager.visitors)
- 
-
-
+  console.log(currentVillager.visitors);
 
   return (
     <div class="card">
       <img
         class="card-img-top"
         src={currentVillager.image}
-        alt="Character Image"
+        alt="Character"
       ></img>
       <div class="card-body">
         <h5 class="card-title" style={{ textAlign: "center" }}>
@@ -80,17 +79,22 @@ function VillagerDetail() {
           Likes: {currentVillager.likes}
         </li>
         <li class="list-group-item" style={{ textAlign: "center" }}>
-          Visiting: 
+          Visiting:
         </li>
         <li class="list-group-item" style={{ textAlign: "center" }}>
           Created By: {currentVillager.created_by}
         </li>
         <li class="list-group-item" style={{ textAlign: "center" }}>
-          <button onClick={deleteVillager} style={{ textAlign: "center" }}>
-            DELETUS
-          </button>
+          {users.username === currentVillager.created_by ? (
+            <button onClick={deleteVillager} style={{ textAlign: "center" }}>
+              DELETUS
+            </button>
+          ) : (
+            ""
+          )}
         </li>
         <li>
+          ``
           <button
             type="button"
             class="btn btn-primary"

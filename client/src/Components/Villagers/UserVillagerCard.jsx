@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 function UserVillagerCard() {
-  const userVillagers = useSelector((state) => state.newVillagers);
 
+  const userVillagers = useSelector((state) => state.newVillagers);
+  
   return (
     <>
       <h1 className="reviews-h1" style={{ textAlign: "center" }}>
@@ -21,7 +22,7 @@ function UserVillagerCard() {
               <img
                 class="card-img-top"
                 src={data.image}
-                alt="Character Image"
+                alt="Character"
               ></img>
               <div class="card-body">
                 <h5 class="card-title" style={{ textAlign: "center" }}>

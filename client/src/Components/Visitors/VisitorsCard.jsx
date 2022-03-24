@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Carousel, Button } from "react-bootstrap";
+import { Carousel } from "react-bootstrap";
 
 export default function VisitorsCard() {
   const visitors = useSelector((state) => state.visitors.entities);
@@ -15,7 +15,7 @@ export default function VisitorsCard() {
               <img
                 class="card-img-top"
                 src={data.villager["image"]}
-                alt="Character Image"
+                alt="Character"
               ></img>
               <div class="card-body">
                 <h5 class="card-title" style={{ textAlign: "center" }}>

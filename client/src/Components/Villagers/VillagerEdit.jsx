@@ -61,7 +61,7 @@ export default function VillagerEdit({ currentVillager }) {
       <img
         class="img-fluid"
         src={currentVillager.image}
-        alt="new villager form image"
+        alt="new villager form"
       />
 
       <h1 style={{ textAlign: "center" }}>NewVillagerForm</h1>

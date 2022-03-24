@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { createIsland } from "./IslandsSlice";
 
-export default function IslandForm({ user }) {
+export default function IslandForm() {
   const [newName, setNewName] = useState("");
+
+  const users = useSelector((state) => state.users.entities);
 
   function handleSetNewName(e) {
     setNewName(e.target.value);
@@ -18,7 +20,7 @@ export default function IslandForm({ user }) {
 
     const newIslandObj = {
       name: newName,
-      user_id: user.id,
+      user_id: users.id,
     };
     dispatch(createIsland(newIslandObj))
       .unwrap()
@@ -39,7 +41,7 @@ export default function IslandForm({ user }) {
       <img
         class="img-fluid"
         src="https://pbs.twimg.com/media/ES6xdEpWsAEAzhU.jpg"
-        alt="new island image form"
+        alt="new island form"
       />
       <h1 style={{ textAlign: "center" }}>Island Form</h1>
 

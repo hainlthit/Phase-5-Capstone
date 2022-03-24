@@ -1,25 +1,26 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { createVisitor } from "./VisitorsSlice";
 
 export default function VisitorsForm() {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const islandData = useSelector((state) => [...state.islands.entities]);
+  const islandData = useSelector((state) => [...state.users.entities.islands]);
   const villagerData = useSelector((state) => [...state.newVillagers]);
 
   const [island, setIsland] = useState("");
   const [villager, setVillager] = useState("");
 
+  console.log(islandData)
   const islandOptions = islandData.map(({ id, name }) => (
     <option key={id} value={id}>
       {name}
     </option>
   ));
 
-  console.log(islandData)
+
   console.log(villagerData)
 
   const villagerOptions = villagerData.map(({ id, name }) => (
@@ -53,7 +54,7 @@ export default function VisitorsForm() {
       .catch((e) => {
         console.log(e);
       });
-      window.location.reload()
+  
   }
 
   return (

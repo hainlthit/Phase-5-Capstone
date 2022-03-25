@@ -49,10 +49,9 @@ const usersSlice = createSlice({
     entities: [],
   },
   reducers: {
-    logout: (state) => {
-      // From here we can take action only at this "counter" state
-      // But, as we have taken care of this particular "logout" action
-      // in rootReducer, we can use it to CLEAR the complete Redux Store's state
+    logout: (state, action) => {
+      if (action.type === "users/logout") 
+      state.users = undefined;
     },
   },
   extraReducers: {

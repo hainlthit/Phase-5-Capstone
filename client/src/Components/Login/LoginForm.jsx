@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Container, Form, Button, Alert } from 'react-bootstrap'
+import { fetchUsers, logout } from "../Users/UsersSlice";
+import { useDispatch } from "react-redux";
 
 function LoginForm({onLogin}) {
 
@@ -7,6 +9,8 @@ function LoginForm({onLogin}) {
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+
+    const dispatch = useDispatch();
 
     function handleSubmit(e){
         e.preventDefault();
@@ -16,6 +20,7 @@ function LoginForm({onLogin}) {
             headers: { "Content-Type": "application/json"},
             body: JSON.stringify({ email, password })
         }).then ((r) => {
+            dispatch(fetchUsers());
             setIsLoading(false);
             if (r.ok){
                 r.json().then((user) => onLogin(user));

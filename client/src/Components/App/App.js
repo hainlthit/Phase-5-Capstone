@@ -48,9 +48,7 @@ function App() {
     dispatch(fetchVisitors());
   }, [dispatch]);
 
-  useEffect(() => {
-    dispatch(fetchUsers());
-  }, [dispatch]);
+
 
   function handleLogOutClick() {
     fetch("/logout", {

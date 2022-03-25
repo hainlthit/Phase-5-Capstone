@@ -11,12 +11,17 @@ import VillagerEdit from "../Villagers/VillagerEdit.jsx";
 
 function VillagerDetail() {
   const [currentVillager, setCurrentVillager] = useState("");
+  const [edits, setEdits] = useState(true);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const { id } = useParams();
 
   const users = useSelector((state) => state.users.entities);
+
+  function editPage() {
+    setEdits(false);
+  }
 
   useEffect(() => {
     fetch(`/villagers/${id}`)
@@ -54,107 +59,122 @@ function VillagerDetail() {
   console.log(currentVillager.visitors);
 
   return (
-    <div class="card">
-      <img
-        class="card-img-top"
-        src={currentVillager.image}
-        alt="Character"
-      ></img>
-      <div class="card-body">
-        <h5 class="card-title" style={{ textAlign: "center" }}>
-          {currentVillager.name}
-        </h5>
-      </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item" style={{ textAlign: "center" }}>
-          Birthday: {currentVillager.birthday}
-        </li>
-        <li class="list-group-item" style={{ textAlign: "center" }}>
-          Species: {currentVillager.species}
-        </li>
-        <li class="list-group-item" style={{ textAlign: "center" }}>
-          Personality: {currentVillager.personality}
-        </li>
-        <li class="list-group-item" style={{ textAlign: "center" }}>
-          Likes: {currentVillager.likes}
-        </li>
-        <li class="list-group-item" style={{ textAlign: "center" }}>
-          Visiting:
-        </li>
-        <li class="list-group-item" style={{ textAlign: "center" }}>
-          Created By: {currentVillager.created_by}
-        </li>
-        <li class="list-group-item" style={{ textAlign: "center" }}>
-          {users.username === currentVillager.created_by ? (
-            <button onClick={deleteVillager} style={{ textAlign: "center" }}>
-              DELETUS
-            </button>
-          ) : (
-            ""
-          )}
-        </li>
-        <li>
-          ``
-          <button
-            type="button"
-            class="btn btn-primary"
-            data-bs-toggle="modal"
-            data-bs-target="#exampleModal"
-          >
-            EDITS
-          </button>
-          <div
-            class="modal fade"
-            id="exampleModal"
-            tabindex="-1"
-            role="dialog"
-            aria-labelledby="exampleModalLabel"
-            aria-hidden="true"
-          >
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">
-                    {currentVillager.name}
-                  </h5>
-                  <button
-                    type="button"
-                    class="close"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
-                  >
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <VillagerEdit currentVillager={currentVillager} />
-                </div>
-                <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-bs-dismiss="modal"
-                  >
-                    Close
-                  </button>
-                  <button type="button" class="btn btn-primary">
-                    Save changes
-                  </button>
+    <>
+      {edits ? (
+        <div class="card">
+          <img
+            class="card-img-top"
+            src={currentVillager.image}
+            alt="Character"
+          ></img>
+          <div class="card-body">
+            <h5 class="card-title" style={{ textAlign: "center" }}>
+              {currentVillager.name}
+            </h5>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item" style={{ textAlign: "center" }}>
+              Birthday: {currentVillager.birthday}
+            </li>
+            <li class="list-group-item" style={{ textAlign: "center" }}>
+              Species: {currentVillager.species}
+            </li>
+            <li class="list-group-item" style={{ textAlign: "center" }}>
+              Personality: {currentVillager.personality}
+            </li>
+            <li class="list-group-item" style={{ textAlign: "center" }}>
+              Likes: {currentVillager.likes}
+            </li>
+            <li class="list-group-item" style={{ textAlign: "center" }}>
+              Visiting:
+            </li>
+            <li class="list-group-item" style={{ textAlign: "center" }}>
+              Created By: {currentVillager.created_by}
+            </li>
+
+            {users.username === currentVillager.created_by ? (
+              <li class="list-group-item" style={{ textAlign: "center" }}>
+                {" "}
+                <button
+                  onClick={deleteVillager}
+                  style={{ textAlign: "center" }}
+                >
+                  DELETUS
+                </button>
+                <button onClick={editPage} style={{ textAlign: "center" }}>
+                  EDITS
+                </button>
+              </li>
+            ) : (
+              ""
+            )}
+
+            <li>
+              ``
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
+              >
+                EDITS
+              </button>
+              <div
+                class="modal fade"
+                id="exampleModal"
+                tabindex="-1"
+                role="dialog"
+                aria-labelledby="exampleModalLabel"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">
+                        {currentVillager.name}
+                      </h5>
+                      <button
+                        type="button"
+                        class="close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      >
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <VillagerEdit currentVillager={currentVillager} />
+                    </div>
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal"
+                      >
+                        Close
+                      </button>
+                      <button type="button" class="btn btn-primary">
+                        Save changes
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </li>
-        <li class="list-group-item" style={{ textAlign: "center" }}>
-          <Link to={"/villagers"}>
-            <button aria-pressed="false" style={{ textAlign: "center" }}>
-              Back
-            </button>
-          </Link>
-        </li>
-        <li class="list-group-item" style={{ textAlign: "center" }}></li>
-      </ul>
-    </div>
+            </li>
+            <li class="list-group-item" style={{ textAlign: "center" }}>
+              <Link to={"/villagers"}>
+                <button aria-pressed="false" style={{ textAlign: "center" }}>
+                  Back
+                </button>
+              </Link>
+            </li>
+            <li class="list-group-item" style={{ textAlign: "center" }}></li>
+          </ul>
+        </div>
+      ) : (
+        <VillagerEdit currentVillager={currentVillager} />
+      )}
+    </>
   );
 }
 

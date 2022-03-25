@@ -27,8 +27,7 @@ function App() {
   const [user, setUser] = useState(null);
   console.log(user);
   const navigate = useNavigate();
-  // const [data, setData] = useState('')
-  // const [userVillagers, setUserVillagers] = useState("");
+
 
   const dispatch = useDispatch();
 
@@ -91,14 +90,14 @@ function App() {
         <Route
           exact
           path="/add_island"
-          element={<IslandForm user={user} />}
+          element={<IslandForm />}
         />
         <Route
           exact
           path="/add_visitors"
           element={<VisitorsForm />}
         />
-        <Route exact path="/villagers/:id" element={<VillagerDetail user={user} />} />
+        <Route exact path="/villagers/:id" element={<VillagerDetail />} />
         {/* <Route exact path="/spells" element={<Spells />} /> */}
         {/* <Route exact path="/skills" element={<Skills />} /> */}
         {/* <Route exact path="/spells/:id" element={<SpellDetail />} /> */}

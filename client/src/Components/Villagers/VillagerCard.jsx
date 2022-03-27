@@ -9,46 +9,46 @@ export default function VillagerCard() {
   function flipHandler() {
     setFlipCard(!flipCard);
   }
-  
+
   const villagerData = useSelector((state) => [...state.villagers]);
 
   function shuffle(array) {
-    let currentIndex = array.length,  randomIndex;
+    let currentIndex = array.length,
+      randomIndex;
 
     // While there remain elements to shuffle...
     while (currentIndex !== 0) {
-
       // Pick a remaining element...
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex--;
 
       // And swap it with the current element.
       [array[currentIndex], array[randomIndex]] = [
-        array[randomIndex], array[currentIndex]];
+        array[randomIndex],
+        array[currentIndex],
+      ];
     }
 
     return array;
   }
 
   shuffle(villagerData);
-  console.log(villagerData)
+  console.log(villagerData);
 
   return (
     <>
-      <h1 className="reviews-h1" style={{ textAlign: "center" }}>Meet a random Villager!</h1>
-      <Carousel >
+      <h1 className="reviews-h1" style={{ textAlign: "center" }}>
+        Meet a random Villager!
+      </h1>
+      <Carousel>
         {villagerData.map((data) => (
           <Carousel.Item key={data.id}>
             {flipCard ? (
               <div class="card">
-                <img
-                  class="card-img-top"
-                  src={data.icon_uri}
-                  alt="Icon"
-                ></img>
+                <img class="card-img-top" src={data.icon_uri} alt="Icon"></img>
                 <div class="card-body">
                   <h5 class="card-title" style={{ textAlign: "center" }}>
-                    {data.name['name-USen']}
+                    {data.name["name-USen"]}
                   </h5>
                   <div class="card-body" style={{ textAlign: "center" }}>
                     <Button onClick={flipHandler} aria-pressed="false">
@@ -66,7 +66,7 @@ export default function VillagerCard() {
                 ></img>
                 <div class="card-body">
                   <h5 class="card-title" style={{ textAlign: "center" }}>
-                  {data.name['name-USen']}
+                    {data.name["name-USen"]}
                   </h5>
                 </div>
                 <ul class="list-group list-group-flush">
@@ -101,5 +101,3 @@ export default function VillagerCard() {
     </>
   );
 }
-
-

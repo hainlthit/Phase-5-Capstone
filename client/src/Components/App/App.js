@@ -9,7 +9,7 @@ import { fetchVillagers } from "../Villagers/villagersSlice";
 import { fetchNewVillagers } from "../Villagers/newVillagersSlice";
 import { fetchIslands } from "../Islands/IslandsSlice";
 import { fetchVisitors } from "../Visitors/VisitorsSlice";
-import { fetchUsers, logout } from "../Users/UsersSlice";
+import { logout } from "../Users/UsersSlice";
 
 // Components
 import Home from "../Home/Home";

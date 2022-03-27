@@ -109,58 +109,6 @@ function VillagerDetail() {
               ""
             )}
 
-            <li>
-              ``
-              <button
-                type="button"
-                class="btn btn-primary"
-                data-bs-toggle="modal"
-                data-bs-target="#exampleModal"
-              >
-                EDITS
-              </button>
-              <div
-                class="modal fade"
-                id="exampleModal"
-                tabindex="-1"
-                role="dialog"
-                aria-labelledby="exampleModalLabel"
-                aria-hidden="true"
-              >
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">
-                        {currentVillager.name}
-                      </h5>
-                      <button
-                        type="button"
-                        class="close"
-                        data-bs-dismiss="modal"
-                        aria-label="Close"
-                      >
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      <VillagerEdit currentVillager={currentVillager} />
-                    </div>
-                    <div class="modal-footer">
-                      <button
-                        type="button"
-                        class="btn btn-secondary"
-                        data-bs-dismiss="modal"
-                      >
-                        Close
-                      </button>
-                      <button type="button" class="btn btn-primary">
-                        Save changes
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </li>
             <li class="list-group-item" style={{ textAlign: "center" }}>
               <Link to={"/villagers"}>
                 <button aria-pressed="false" style={{ textAlign: "center" }}>
@@ -168,7 +116,6 @@ function VillagerDetail() {
                 </button>
               </Link>
             </li>
-            <li class="list-group-item" style={{ textAlign: "center" }}></li>
           </ul>
         </div>
       ) : (

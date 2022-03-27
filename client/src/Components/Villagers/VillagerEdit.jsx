@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { updateNewVillagers } from "./newVillagersSlice";
+import { fetchNewVillagers } from "../Villagers/newVillagersSlice";
 import { useNavigate } from "react-router-dom";
 
 export default function VillagerEdit({ currentVillager }) {
@@ -50,6 +51,7 @@ export default function VillagerEdit({ currentVillager }) {
       .catch((e) => {
         console.log(e);
       });
+    dispatch(fetchNewVillagers());
     setNewName("");
     setNewSpecies("");
     setNewBirthday("");

@@ -60,7 +60,7 @@ const newVillagersSlice = createSlice({
       state.push(action.payload);
     },
     [fetchNewVillagers.fulfilled]: (state, action) => {
-      return [...action.payload];
+      return action.payload;
     },
 
     [deleteNewVillager.fulfilled]: (state, action) => {

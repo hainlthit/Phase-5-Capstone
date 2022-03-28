@@ -26,18 +26,6 @@ export default function VisitorsCard() {
                 <li class="list-group-item" style={{ textAlign: "center" }}>
                   Visiting Island : {data.island["name"]}
                 </li>
-                <li
-                  class="list-group-item"
-                  style={{ textAlign: "center" }}
-                ></li>
-                <li
-                  class="list-group-item"
-                  style={{ textAlign: "center" }}
-                ></li>
-                <li
-                  class="list-group-item"
-                  style={{ textAlign: "center" }}
-                ></li>
                 <li class="list-group-item" style={{ textAlign: "center" }}>
                   {/* <Link to={`/villagers/${data.id}`}>
                     <Button

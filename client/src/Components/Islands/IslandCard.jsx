@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 export default function IslandCard() {
-  const islandData = useSelector((state) => [...state.islands]);
+  const islandData = useSelector((state) => state.islands);
 
   console.log(islandData);
 

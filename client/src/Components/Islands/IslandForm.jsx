@@ -38,14 +38,15 @@ export default function IslandForm() {
       .unwrap()
       .then((data) => {
         console.log(data);
-        dispatch(fetchUsers());
       })
       .catch((e) => {
         console.log(e);
       });
-    dispatch(fetchIslands());
+    
+    dispatch(fetchUsers());
     navigate("/islands");
     console.log(newIslandObj);
+    dispatch(fetchIslands());
   }
 
   return (

@@ -54,7 +54,7 @@ const islandsSlice = createSlice({
   reducers: {},
   extraReducers: {
     [fetchIslands.fulfilled]: (state, action) => {
-      return [...action.payload];
+      return action.payload;
     },
     // [deleteComment.fulfilled](state, action) {
     //   state.entities = state.entities.filter(

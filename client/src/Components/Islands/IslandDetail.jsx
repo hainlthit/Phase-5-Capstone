@@ -37,7 +37,9 @@ function IslandDetail() {
 
   return (
     <>
-      ISLAND DETAILS
+      <h1 className="reviews-h1" style={{ textAlign: "center" }}>
+        ISLAND DETAILS
+      </h1>
       <div class="card">
         <img
           class="card-img-top"
@@ -50,9 +52,9 @@ function IslandDetail() {
           </h5>
         </div>
         <ul class="list-group list-group-flush">
-        <li class="list-group-item" style={{ textAlign: "center" }}>
-                  Description: {currentIsland.description}
-                </li>
+          <li class="list-group-item" style={{ textAlign: "center" }}>
+            Description: {currentIsland.description}
+          </li>
           <li class="list-group-item" style={{ textAlign: "center" }}>
             {" "}
             <button onClick={deleteIslands} style={{ textAlign: "center" }}>

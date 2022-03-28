@@ -34,18 +34,18 @@ export const createVisitor = createAsyncThunk(
   }
 );
 
-export const updateComment = createAsyncThunk(
-  "comments/updateComment",
-  async (updateComment) => {
-    return fetch(`/comments/${updateComment['id']}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updateComment),
-    }).then((res) => res.json());
-  }
-);
+// export const updateComment = createAsyncThunk(
+//   "comments/updateComment",
+//   async (updateComment) => {
+//     return fetch(`/comments/${updateComment['id']}`, {
+//       method: "PATCH",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify(updateComment),
+//     }).then((res) => res.json());
+//   }
+// );
 
 const visitorsSlice = createSlice({
   name: "visitors",
@@ -65,12 +65,12 @@ const visitorsSlice = createSlice({
     [createVisitor.fulfilled](state, action) {
       state.entities = [...state.entities, action.payload];
     },
-    [updateComment.fulfilled](state, action) {
-      state.entities = state.entities.filter(
-        (comment) => comment.id !== action.payload['id']
-      )
-      state.entities = [...state.entities, action.payload];
-    },
+    // [updateComment.fulfilled](state, action) {
+    //   state.entities = state.entities.filter(
+    //     (comment) => comment.id !== action.payload['id']
+    //   )
+    //   state.entities = [...state.entities, action.payload];
+    // },
   },
 });
 

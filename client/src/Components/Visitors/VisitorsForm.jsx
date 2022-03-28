@@ -8,18 +8,12 @@ export default function VisitorsForm() {
   const dispatch = useDispatch();
   // const navigate = useNavigate();
 
-  const islandData = useSelector((state) => [...state.users.entities.islands]);
+  const islandData = useSelector((state) => state.users.entities.islands);
   const villagerData = useSelector((state) => [...state.newVillagers]);
 
-  const [island, setIsland] = useState("");
   const [villager, setVillager] = useState("");
 
   console.log(islandData);
-  const islandOptions = islandData.map(({ id, name }) => (
-    <option key={id} value={id}>
-      {name}
-    </option>
-  ));
 
   console.log(villagerData);
 
@@ -29,10 +23,6 @@ export default function VisitorsForm() {
     </option>
   ));
 
-  function handleIslandSelect(e) {
-    setIsland(e.target.value);
-  }
-
   function handleVillagerSelect(e) {
     setVillager(e.target.value);
   }
@@ -41,7 +31,8 @@ export default function VisitorsForm() {
     e.preventDefault();
     dispatch(
       createVisitor({
-        villager_id: villager, island_id: island,
+        villager_id: villager,
+        island_id: islandData[0].id,
       })
     )
       .unwrap()
@@ -64,16 +55,10 @@ export default function VisitorsForm() {
       <h1 style={{ textAlign: "center" }}>Visitors Form</h1>
 
       <form onSubmit={handleSubmit}>
-        <label className="input-label">Island: </label>
-        <br />
-        <select  onChange={handleIslandSelect}>
-          {islandOptions}
-        </select>
+        <p> Add a villager to {islandData[0].name} </p>
         <label className="input-label">Villager: </label>
         <br />
-        <select onChange={handleVillagerSelect}>
-          {villagerOptions}
-        </select>
+        <select onChange={handleVillagerSelect}>{villagerOptions}</select>
         <div type="submit" style={{ textAlign: "center" }}>
           <button className="form-input">New Visitors</button>
         </div>

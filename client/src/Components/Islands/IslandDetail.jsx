@@ -41,7 +41,7 @@ function IslandDetail() {
       <div class="card">
         <img
           class="card-img-top"
-          src="https://thumbs.dreamstime.com/b/tropical-island-ocean-palm-trees-volcano-clip-art-illustration-lava-flowing-smoking-95612442.jpg"
+          src={currentIsland.image}
           alt="Character"
         ></img>
         <div class="card-body">
@@ -50,6 +50,9 @@ function IslandDetail() {
           </h5>
         </div>
         <ul class="list-group list-group-flush">
+        <li class="list-group-item" style={{ textAlign: "center" }}>
+                  Description: {currentIsland.description}
+                </li>
           <li class="list-group-item" style={{ textAlign: "center" }}>
             {" "}
             <button onClick={deleteIslands} style={{ textAlign: "center" }}>

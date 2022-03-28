@@ -36,7 +36,7 @@ export default function IslandCard() {
             <div class="card">
               <img
                 class="card-img-top"
-                src="https://thumbs.dreamstime.com/b/tropical-island-ocean-palm-trees-volcano-clip-art-illustration-lava-flowing-smoking-95612442.jpg"
+                src={data.image}
                 alt="Island"
               ></img>
               <div class="card-body">

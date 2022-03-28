@@ -1,5 +1,6 @@
 class IslandSerializer < ActiveModel::Serializer
-  attributes :id, :name
+  attributes :id, :name, :description, :image
+
   has_one :user
 
   has_many :visitors

@@ -9,7 +9,7 @@ export default function VisitorsCard() {
   return (
     <>
       <Carousel>
-        {visitors.map((data) => (
+        {visitors?.map((data) => (
           <Carousel.Item key={data.id}>
             <div class="card">
               <img

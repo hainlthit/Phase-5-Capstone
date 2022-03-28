@@ -19,6 +19,7 @@ import VillagerContainer from "../Villagers/VillagerContainer.jsx";
 import VillagerDetail from "../Villagers/VillagerDetail.jsx";
 import NewVillagerForm from "../Villagers/NewVillagerForm.jsx";
 import IslandContainer from "../Islands/IslandContainer.jsx";
+import IslandDetail from "../Islands/IslandDetail.jsx";
 import IslandForm from "../Islands/IslandForm.jsx";
 import VisitorsForm from "../Visitors/VisitorsForm.jsx";
 import VisitorsContainer from "../Visitors/VisitorsContainer.jsx";
@@ -27,7 +28,6 @@ function App() {
   const [user, setUser] = useState(null);
   console.log(user);
   const navigate = useNavigate();
-
 
   const dispatch = useDispatch();
 
@@ -46,8 +46,6 @@ function App() {
   useEffect(() => {
     dispatch(fetchVisitors());
   }, [dispatch]);
-
-
 
   function handleLogOutClick() {
     fetch("/logout", {
@@ -79,25 +77,14 @@ function App() {
       <NavBar user={user} handleLogOutClick={handleLogOutClick} />
       <Routes>
         <Route exact path="/home" element={<Home />} />
-        <Route exact path="/villagers" element={<VillagerContainer  />} />
+        <Route exact path="/villagers" element={<VillagerContainer />} />
         <Route exact path="/islands" element={<IslandContainer />} />
         <Route exact path="/visitors" element={<VisitorsContainer />} />
-        <Route
-          exact
-          path="/add_villager"
-          element={<NewVillagerForm  />}
-        />
-        <Route
-          exact
-          path="/add_island"
-          element={<IslandForm />}
-        />
-        <Route
-          exact
-          path="/add_visitors"
-          element={<VisitorsForm />}
-        />
+        <Route exact path="/add_villager" element={<NewVillagerForm />} />
+        <Route exact path="/add_island" element={<IslandForm />} />
+        <Route exact path="/add_visitors" element={<VisitorsForm />} />
         <Route exact path="/villagers/:id" element={<VillagerDetail />} />
+        <Route exact path="/islands/:id" element={<IslandDetail />} />
         {/* <Route exact path="/spells" element={<Spells />} /> */}
         {/* <Route exact path="/skills" element={<Skills />} /> */}
         {/* <Route exact path="/spells/:id" element={<SpellDetail />} /> */}

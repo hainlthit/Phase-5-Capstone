@@ -5,14 +5,9 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 export default function IslandCard() {
-  const islandData = useSelector((state) => state.islands.entities);
-  const visitors = useSelector((state) => [...state.visitors.entities]);
+  const islandData = useSelector((state) => [...state.islands]);
 
-  console.log(visitors[0].island.name);
   console.log(islandData);
-
-  const visitorLength = visitors?.map((visitor) => visitor.island.name);
-  console.log(visitorLength);
 
   return (
     <>
@@ -36,7 +31,7 @@ export default function IslandCard() {
       </div>
 
       <Carousel>
-        {islandData?.map((data) => (
+        {islandData.map((data) => (
           <Carousel.Item key={data.id}>
             <div class="card">
               <img
@@ -62,21 +57,12 @@ export default function IslandCard() {
                     ))}{" "}
                   </ul>
                 </li>
-                <li class="list-group-item" style={{ textAlign: "center" }}>
-                  Created By: {data.user.username}
-                </li>
-
                 {/* <li class="list-group-item" style={{ textAlign: "center" }}>
-                  Personality: {data.personality}
-                </li>
+                  Created By: {data.user["username"]}
+                  class="list-group-item" style={{ textAlign: "center" }}>
+                </li> */}
                 <li class="list-group-item" style={{ textAlign: "center" }}>
-                  Islands Visiting: {data.visitors.length}
-                </li>
-                <li class="list-group-item" style={{ textAlign: "center" }}>
-                  Created By: {data.created_by}
-                </li>
-                <li class="list-group-item" style={{ textAlign: "center" }}>
-                  <Link to={`/villagers/${data.id}`}>
+                  <Link to={`/islands/${data.id}`}>
                     <Button
                       aria-pressed="false"
                       style={{ textAlign: "center" }}
@@ -84,11 +70,7 @@ export default function IslandCard() {
                       More Info
                     </Button>
                   </Link>
-                </li> */}
-                <li
-                  class="list-group-item"
-                  style={{ textAlign: "center" }}
-                ></li>
+                </li>
               </ul>
             </div>
           </Carousel.Item>

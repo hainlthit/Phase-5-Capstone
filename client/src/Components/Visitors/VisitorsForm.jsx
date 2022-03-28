@@ -41,8 +41,7 @@ export default function VisitorsForm() {
     e.preventDefault();
     dispatch(
       createVisitor({
-        villager_id: villager,
-        island_id: island,
+        villager_id: villager, island_id: island,
       })
     )
       .unwrap()
@@ -67,12 +66,12 @@ export default function VisitorsForm() {
       <form onSubmit={handleSubmit}>
         <label className="input-label">Island: </label>
         <br />
-        <select id="venue-data" onChange={handleIslandSelect}>
+        <select  onChange={handleIslandSelect}>
           {islandOptions}
         </select>
         <label className="input-label">Villager: </label>
         <br />
-        <select id="venue-data" onChange={handleVillagerSelect}>
+        <select onChange={handleVillagerSelect}>
           {villagerOptions}
         </select>
         <div type="submit" style={{ textAlign: "center" }}>

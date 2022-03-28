@@ -7,8 +7,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import VillagerEdit from "../Villagers/VillagerEdit.jsx";
 
-// import newVillagerDataService from "../../services/newVillagerServices";
-
 function VillagerDetail() {
   const [currentVillager, setCurrentVillager] = useState("");
   const [edits, setEdits] = useState(true);
@@ -30,25 +28,6 @@ function VillagerDetail() {
         setCurrentVillager(data);
       });
   }, [id]);
-
-  // function handleDelete() {
-  //   dispatch(deleteNewVillager(currentVillager.id))
-  //     .unwrap()
-  //     .then(() => {
-  //       navigate("/villagers");
-  //     })
-  //     .catch((e) => {
-  //       console.log(e);
-  //     });
-  // }
-
-  // function handleDelete(){
-  //     fetch(`/villagers/${id}`, {
-  //       method: 'DELETE',
-  //     })
-  //     .then((r) => r.json())
-  //     .then((data) => dispatch(newVillagerRemoved(data)))
-  //   }
 
   function deleteVillager() {
     dispatch(deleteNewVillager(currentVillager.id));

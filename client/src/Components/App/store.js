@@ -1,7 +1,4 @@
-import {
-  configureStore,
-  combineReducers
-} from "@reduxjs/toolkit";
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
 
 import villagerReducer from "../Villagers/villagersSlice";
 import newVillagersReducer from "../Villagers/newVillagersSlice";

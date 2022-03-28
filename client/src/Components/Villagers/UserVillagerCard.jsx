@@ -4,9 +4,8 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 function UserVillagerCard() {
-
   const userVillagers = useSelector((state) => state.newVillagers);
-  
+
   return (
     <>
       <h1 className="reviews-h1" style={{ textAlign: "center" }}>
@@ -19,11 +18,7 @@ function UserVillagerCard() {
         {userVillagers.map((data) => (
           <Carousel.Item key={data.id}>
             <div class="card">
-              <img
-                class="card-img-top"
-                src={data.image}
-                alt="Character"
-              ></img>
+              <img class="card-img-top" src={data.image} alt="Character"></img>
               <div class="card-body">
                 <h5 class="card-title" style={{ textAlign: "center" }}>
                   {data.name}
@@ -38,9 +33,6 @@ function UserVillagerCard() {
                 </li>
                 <li class="list-group-item" style={{ textAlign: "center" }}>
                   Personality: {data.personality}
-                </li>
-                <li class="list-group-item" style={{ textAlign: "center" }}>
-                  Islands Visiting: {data.visitors.length}
                 </li>
                 <li class="list-group-item" style={{ textAlign: "center" }}>
                   Created By: {data.created_by}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Form, Button, Alert } from 'react-bootstrap'
-import { fetchUsers, logout } from "../Users/UsersSlice";
+import { fetchUsers } from "../Users/UsersSlice";
 import { useDispatch } from "react-redux";
 
 function LoginForm({onLogin}) {

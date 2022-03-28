@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { createIsland } from "./IslandsSlice";
+import { fetchUsers } from "../Users/UsersSlice";
 
 export default function IslandForm() {
   const [newName, setNewName] = useState("");
@@ -26,15 +27,15 @@ export default function IslandForm() {
       .unwrap()
       .then((data) => {
         console.log(data);
+        dispatch(fetchUsers());
       })
       .catch((e) => {
         console.log(e);
       });
+    
     navigate("/islands");
-    console.log(newIslandObj)
+    console.log(newIslandObj);
   }
-
-
 
   return (
     <>

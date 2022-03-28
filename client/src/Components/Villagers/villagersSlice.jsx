@@ -1,11 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import VillagerDataService from "../../services/villagerServices";
 
 export const fetchVillagers = createAsyncThunk(
-  "villagers/fetchData",
+  "villagers/fetchVillagers",
   async () => {
-    const res = await VillagerDataService.getAll();
-    return res.data;
+    return fetch("https://acnhapi.com/v1a/villagers").then((res) => res.json());
   }
 );
 
@@ -22,4 +20,3 @@ const villagersSlice = createSlice({
 });
 
 export default villagersSlice.reducer;
-

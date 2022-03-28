@@ -8,11 +8,11 @@ export default function IslandCard() {
   const islandData = useSelector((state) => state.islands.entities);
   const visitors = useSelector((state) => [...state.visitors.entities]);
 
-  console.log(visitors[0].island.name)
+  console.log(visitors[0].island.name);
   console.log(islandData);
 
-  const visitorLength = (visitors.map((visitor) => visitor.island.name))
-  console.log(visitorLength)
+  const visitorLength = visitors?.map((visitor) => visitor.island.name);
+  console.log(visitorLength);
 
   return (
     <>

@@ -1,33 +1,37 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import newVillagerDataService from "../../services/newVillagerServices";
+// import newVillagerDataService from "../../services/newVillagerServices";
 
 const initialState = {
   entities: [],
 };
 
+// export const addNewVillagers = createAsyncThunk(
+//   "newVillager/create",
+//   async (newVillagerObj) => {
+//     const res = await newVillagerDataService.create(newVillagerObj);
+//     return res.data;
+//   }
+// );
+
 export const addNewVillagers = createAsyncThunk(
-  "newVillager/create",
+  "newVillager/createNewVillager",
   async (newVillagerObj) => {
-    const res = await newVillagerDataService.create(newVillagerObj);
-    return res.data;
+    return fetch(`/villagers`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newVillagerObj),
+    }).then((res) => res.json());
   }
 );
 
 export const fetchNewVillagers = createAsyncThunk(
-  "newVillagers/fetchData",
+  "newVillagers/fetchNewVillagers",
   async () => {
-    const res = await newVillagerDataService.getAll();
-    return res.data;
+    return fetch("/villagers").then((res) => res.json());
   }
 );
-
-// export const updateVillagers = createAsyncThunk(
-//   "newVillagers/newVillagerUpdate",
-//   async ({ id, data }) => {
-//     const res = await newVillagerDataService.update(id, data);
-//     return res.data;
-//   }
-// );
 
 export const updateNewVillagers = createAsyncThunk(
   "newVillagers/updateNewVillagers",
@@ -42,14 +46,6 @@ export const updateNewVillagers = createAsyncThunk(
   }
 );
 
-// export const deleteNewVillager = createAsyncThunk(
-//   "newVillagers/newVillagerDeleted",
-//   async ({ villagerId }) => {
-//     await newVillagerDataService.remove(villagerId);
-//     return villagerId;
-//   }
-// );
-
 export const deleteNewVillager = createAsyncThunk(
   "newVillagers/deleteNewVillager",
   async (currentVillagerId) => {
@@ -62,22 +58,6 @@ export const deleteNewVillager = createAsyncThunk(
     return currentVillagerId;
   }
 );
-
-// export const deleteAllTutorials = createAsyncThunk(
-//   "tutorials/deleteAll",
-//   async () => {
-//     const res = await TutorialDataService.removeAll();
-//     return res.data;
-//   }
-// );
-
-// export const findTutorialsByTitle = createAsyncThunk(
-//   "tutorials/findByTitle",
-//   async ({ title }) => {
-//     const res = await TutorialDataService.findByTitle(title);
-//     return res.data;
-//   }
-// );
 
 const newVillagersSlice = createSlice({
   name: "newVillagers",
@@ -106,9 +86,7 @@ const newVillagersSlice = createSlice({
     },
 
     [updateNewVillagers.fulfilled](state, action) {
-      state = state.filter(
-        (villager) => villager.id !== action.payload.id
-      );
+      state = state.filter((villager) => villager.id !== action.payload.id);
       state = [...state, action.payload];
     },
     // [deleteAllTutorials.fulfilled]: (state, action) => {

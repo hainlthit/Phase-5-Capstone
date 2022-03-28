@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import { useNavigate } from "react-router-dom";
 import { createVisitor } from "./VisitorsSlice";
+import { fetchIslands } from "../Islands/IslandsSlice";
 
 export default function VisitorsForm() {
   const dispatch = useDispatch();
@@ -13,22 +14,20 @@ export default function VisitorsForm() {
   const [island, setIsland] = useState("");
   const [villager, setVillager] = useState("");
 
-  console.log(islandData)
+  console.log(islandData);
   const islandOptions = islandData.map(({ id, name }) => (
     <option key={id} value={id}>
       {name}
     </option>
   ));
 
-
-  console.log(villagerData)
+  console.log(villagerData);
 
   const villagerOptions = villagerData.map(({ id, name }) => (
     <option key={id} value={id}>
       {name}
     </option>
   ));
-
 
   function handleIslandSelect(e) {
     setIsland(e.target.value);
@@ -44,17 +43,16 @@ export default function VisitorsForm() {
       createVisitor({
         villager_id: villager,
         island_id: island,
-        
       })
     )
       .unwrap()
       .then((data) => {
         console.log(data);
+        dispatch(fetchIslands());
       })
       .catch((e) => {
         console.log(e);
       });
-  
   }
 
   return (

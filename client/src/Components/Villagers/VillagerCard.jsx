@@ -1,14 +1,13 @@
-import React, { useState } from "react";
-import { Button } from "react-bootstrap";
+import React from "react";
+import { Link } from "react-router-dom";
+// import { Button } from "react-bootstrap";
 import { Carousel } from "react-bootstrap";
 import { useSelector } from "react-redux";
 
 export default function VillagerCard() {
-  const [flipCard, setFlipCard] = useState(true);
+  const users = useSelector((state) => state.users.entities);
 
-  function flipHandler() {
-    setFlipCard(!flipCard);
-  }
+  console.log(users.username);
 
   const villagerData = useSelector((state) => [...state.villagers]);
 
@@ -43,58 +42,38 @@ export default function VillagerCard() {
       <Carousel>
         {villagerData.map((data) => (
           <Carousel.Item key={data.id}>
-            {flipCard ? (
-              <div class="card">
-                <img class="card-img-top" src={data.icon_uri} alt="Icon"></img>
-                <div class="card-body">
-                  <h5 class="card-title" style={{ textAlign: "center" }}>
-                    {data.name["name-USen"]}
-                  </h5>
-                  <div class="card-body" style={{ textAlign: "center" }}>
-                    <Button onClick={flipHandler} aria-pressed="false">
-                      See more details
-                    </Button>
-                  </div>
-                </div>
+            <div class="card">
+              <img
+                class="card-img-top"
+                src={data.image_uri}
+                alt="Character"
+              ></img>
+              <div class="card-body">
+                <h5 class="card-title" style={{ textAlign: "center" }}>
+                  {data.name["name-USen"]}
+                </h5>
               </div>
-            ) : (
-              <div class="card">
-                <img
-                  class="card-img-top"
-                  src={data.image_uri}
-                  alt="Character"
-                ></img>
-                <div class="card-body">
-                  <h5 class="card-title" style={{ textAlign: "center" }}>
-                    {data.name["name-USen"]}
-                  </h5>
-                </div>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item" style={{ textAlign: "center" }}>
-                    Birthday: {data["birthday-string"]}
-                  </li>
-                  <li class="list-group-item" style={{ textAlign: "center" }}>
-                    Species: {data.species}
-                  </li>
-                  <li class="list-group-item" style={{ textAlign: "center" }}>
-                    Personality: {data.personality}
-                  </li>
-                  <li class="list-group-item" style={{ textAlign: "center" }}>
-                    <Button
-                      onClick={flipHandler}
-                      aria-pressed="false"
-                      style={{ textAlign: "center" }}
-                    >
-                      See less
-                    </Button>
-                  </li>
-                  <li
-                    class="list-group-item"
-                    style={{ textAlign: "center" }}
-                  ></li>
-                </ul>
-              </div>
-            )}
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item" style={{ textAlign: "center" }}>
+                  Birthday: {data["birthday-string"]}
+                </li>
+                <li class="list-group-item" style={{ textAlign: "center" }}>
+                  Species: {data.species}
+                </li>
+                <li class="list-group-item" style={{ textAlign: "center" }}>
+                  Personality: {data.personality}
+                </li>
+                <li class="list-group-item" style={{ textAlign: "center" }}>
+                  <Link to={`/save_villager/${data.id}`}>
+                    <button> Add Villager </button>
+                  </Link>{" "}
+                </li>
+                <li
+                  class="list-group-item"
+                  style={{ textAlign: "center" }}
+                ></li>
+              </ul>
+            </div>
           </Carousel.Item>
         ))}
       </Carousel>

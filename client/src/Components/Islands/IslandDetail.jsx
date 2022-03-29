@@ -60,9 +60,7 @@ function IslandDetail() {
             <button onClick={deleteIslands} style={{ textAlign: "center" }}>
               DELETUR
             </button>
-            <button onClick={editPage} style={{ textAlign: "center" }}>
-              EDITS
-            </button>
+
           </li>
           <li class="list-group-item" style={{ textAlign: "center" }}>
             <Link to={"/islands"}>

@@ -17,6 +17,7 @@ import NavBar from "../NavBar/NavBar";
 import Login from "../Login/Login";
 import VillagerContainer from "../Villagers/VillagerContainer.jsx";
 import VillagerDetail from "../Villagers/VillagerDetail.jsx";
+import AddVillager from "../Villagers/AddVillager.jsx";
 import NewVillagerForm from "../Villagers/NewVillagerForm.jsx";
 import IslandContainer from "../Islands/IslandContainer.jsx";
 import IslandDetail from "../Islands/IslandDetail.jsx";
@@ -85,6 +86,7 @@ function App() {
         <Route exact path="/add_visitors" element={<VisitorsForm />} />
         <Route exact path="/villagers/:id" element={<VillagerDetail />} />
         <Route exact path="/islands/:id" element={<IslandDetail />} />
+        <Route exact path="/save_villager/:id" element={<AddVillager />} />
         {/* <Route exact path="/spells" element={<Spells />} /> */}
         {/* <Route exact path="/skills" element={<Skills />} /> */}
         {/* <Route exact path="/spells/:id" element={<SpellDetail />} /> */}

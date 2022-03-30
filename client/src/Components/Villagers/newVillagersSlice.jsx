@@ -63,9 +63,15 @@ const newVillagersSlice = createSlice({
       return action.payload;
     },
 
-    [deleteNewVillager.fulfilled]: (state, action) => {
-      let index = state.findIndex(({ id }) => id === action.payload.id);
-      state.splice(index, 1);
+    // [deleteNewVillager.fulfilled]: (state, action) => {
+    //   let index = state.findIndex(({ id }) => id === action.payload.id);
+    //   state.splice(index, 1);
+    // },
+
+    [deleteNewVillager.fulfilled](state, action) {
+      state = state.filter(
+        (comment) => comment.id !== action.payload
+      );
     },
 
     [updateNewVillagers.fulfilled](state, action) {

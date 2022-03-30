@@ -45,9 +45,9 @@ export default function IslandForm() {
       });
 
     dispatch(fetchUsers());
+    dispatch(fetchIslands());
     navigate("/islands");
     console.log(newIslandObj);
-    dispatch(fetchIslands());
   }
 
   return (
@@ -91,7 +91,7 @@ export default function IslandForm() {
         </div>
 
         <div type="submit" style={{ textAlign: "center" }}>
-          <button className="form-input">New Island</button>
+          <button className="form-input" style={{ textAlign: "center", backgroundColor: "#c68483" }} >Start Construction </button>
         </div>
       </form>
     </>

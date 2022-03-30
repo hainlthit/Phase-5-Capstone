@@ -1,5 +1,6 @@
 class VillagersController < ApplicationController
 
+    skip_before_action :authorize, only: :index
 
     def index 
         render json: Villager.all, status: :ok

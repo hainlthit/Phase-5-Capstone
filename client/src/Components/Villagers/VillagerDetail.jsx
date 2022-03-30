@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { deleteNewVillager } from "./newVillagersSlice";
+import { deleteNewVillager, fetchNewVillagers } from "./newVillagersSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import VillagerEdit from "../Villagers/VillagerEdit.jsx";
@@ -31,6 +31,7 @@ function VillagerDetail() {
 
   function deleteVillager() {
     dispatch(deleteNewVillager(currentVillager.id));
+    dispatch(fetchNewVillagers());
     navigate("/villagers");
   }
 
@@ -73,16 +74,30 @@ function VillagerDetail() {
 
             {users.username === currentVillager.created_by ? (
               <li class="list-group-item" style={{ textAlign: "center" }}>
-                {" "}
-                <button
-                  onClick={deleteVillager}
-                  style={{ textAlign: "center" }}
-                >
-                  DELETUS
-                </button>
-                <button onClick={editPage} style={{ textAlign: "center" }}>
-                  EDITS
-                </button>
+                <div class="row">
+                  <div class="col">
+                    <button
+                      onClick={editPage}
+                      style={{
+                        textAlign: "center",
+                        backgroundColor: "#c68483",
+                      }}
+                    >
+                      Not Quite Perfect
+                    </button>
+                  </div>
+                  <div class="col">
+                    <button
+                      onClick={deleteVillager}
+                      style={{
+                        textAlign: "center",
+                        backgroundColor: "#c68483",
+                      }}
+                    >
+                      Say Good-Bye For Now!
+                    </button>
+                  </div>
+                </div>
               </li>
             ) : (
               ""
@@ -90,7 +105,10 @@ function VillagerDetail() {
 
             <li class="list-group-item" style={{ textAlign: "center" }}>
               <Link to={"/villagers"}>
-                <button aria-pressed="false" style={{ textAlign: "center" }}>
+                <button
+                  aria-pressed="false"
+                  style={{ textAlign: "center", backgroundColor: "#c68483" }}
+                >
                   Back
                 </button>
               </Link>

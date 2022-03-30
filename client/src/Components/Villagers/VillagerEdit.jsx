@@ -46,12 +46,13 @@ export default function VillagerEdit({ currentVillager }) {
       .unwrap()
       .then((response) => {
         console.log(response);
+        dispatch(fetchNewVillagers());
         navigate("/villagers");
       })
       .catch((e) => {
         console.log(e);
       });
-    dispatch(fetchNewVillagers());
+    
     setNewName("");
     setNewSpecies("");
     setNewBirthday("");
@@ -114,7 +115,7 @@ export default function VillagerEdit({ currentVillager }) {
           />
         </div>
         <div type="submit" style={{ textAlign: "center" }}>
-          <button className="form-input">Save Edits</button>
+          <button className="form-input" style={{backgroundColor: "#c68483"}}>Save Edits</button>
         </div>
       </form>
     </>

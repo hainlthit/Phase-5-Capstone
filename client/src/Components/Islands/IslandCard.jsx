@@ -58,10 +58,9 @@ export default function IslandCard() {
                     ))}{" "}
                   </ul>
                 </li>
-                {/* <li class="list-group-item" style={{ textAlign: "center" }}>
+                <li class="list-group-item" style={{ textAlign: "center" }}>
                   Created By: {data.user["username"]}
-                  class="list-group-item" style={{ textAlign: "center" }}>
-                </li> */}
+                </li>
                 <li class="list-group-item" style={{ textAlign: "center" }}>
                   <Link to={`/islands/${data.id}`}>
                     <Button

@@ -2,23 +2,19 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { deleteIsland } from "./IslandsSlice";
+import { deleteIsland, fetchIslands } from "./IslandsSlice";
+import { fetchVisitors } from "../Visitors/VisitorsSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 function IslandDetail() {
   const [currentIsland, setCurrentIsland] = useState("");
-  const [edits, setEdits] = useState(true);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const { id } = useParams();
 
   const users = useSelector((state) => state.users.entities);
-
-  function editPage() {
-    setEdits(false);
-  }
 
   useEffect(() => {
     fetch(`/islands/${id}`)
@@ -30,10 +26,13 @@ function IslandDetail() {
 
   function deleteIslands() {
     dispatch(deleteIsland(currentIsland.id));
+    dispatch(fetchIslands());
+    dispatch(fetchVisitors());
     navigate("/islands");
   }
 
   console.log(id);
+  console.log(users.islands[0].name);
 
   return (
     <>
@@ -55,16 +54,26 @@ function IslandDetail() {
           <li class="list-group-item" style={{ textAlign: "center" }}>
             Description: {currentIsland.description}
           </li>
-          <li class="list-group-item" style={{ textAlign: "center" }}>
-            {" "}
-            <button onClick={deleteIslands} style={{ textAlign: "center" }}>
-              DELETUR
-            </button>
 
-          </li>
+          {users.islands[0].name === currentIsland.name ? (
+            <li class="list-group-item" style={{ textAlign: "center" }}>
+              <button
+                onClick={deleteIslands}
+                style={{ textAlign: "center", backgroundColor: "#c68483" }}
+              >
+                Start from scratch
+              </button>
+            </li>
+          ) : (
+            ""
+          )}
+
           <li class="list-group-item" style={{ textAlign: "center" }}>
             <Link to={"/islands"}>
-              <button aria-pressed="false" style={{ textAlign: "center" }}>
+              <button
+                aria-pressed="false"
+                style={{ textAlign: "center", backgroundColor: "#c68483" }}
+              >
                 Back
               </button>
             </Link>

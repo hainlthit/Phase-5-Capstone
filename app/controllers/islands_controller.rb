@@ -1,5 +1,7 @@
 class IslandsController < ApplicationController
 
+    skip_before_action :authorize, only: :index
+
     def index 
         render json: Island.all, status: :ok
     end

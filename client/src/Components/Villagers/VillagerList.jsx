@@ -18,10 +18,10 @@ export default function VillagerList() {
       <div class="container" style={{ textAlign: "center" }}>
         <div class="row">
           <div class="col">
-            <Button onClick={flipTrue}> Villagrr </Button>
+            <Button  style={{ backgroundColor: "#c68483" }} onClick={flipTrue}> Villagrr </Button>
           </div>
           <div class="col">
-            <Button onClick={flipFalse}> Villagers Ready for a Home </Button>
+            <Button  style={{ backgroundColor: "#c68483" }}  onClick={flipFalse}> Villagers Ready for a Home </Button>
           </div>
         </div>
       </div>

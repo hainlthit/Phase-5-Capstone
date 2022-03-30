@@ -15,12 +15,17 @@ function Login({ onLogin }) {
           {showLogin ? (
             <>
               <LoginForm onLogin={onLogin} />
-              <div style={{ backgroundColor: "#6dc2a0", borderRadius: "5px" }}>
+              <div
+                style={{
+                  backgroundColor: "#6dc2a0",
+                  borderRadius: "5px",
+                  fontFamily: "Fink",
+                }}
+              >
                 Don't have an account? &nbsp;
                 <Button
-                  variant="outline-dark"
+                  variant="outline-dark, dark"
                   onClick={() => setShowLogin(false)}
-                  variant="dark"
                   type="submit"
                 >
                   Sign Up
@@ -28,8 +33,7 @@ function Login({ onLogin }) {
                 <Button
                   onClick={() => setShowResetForm(!showResetForm)}
                   className="m-3"
-                  variant="outline-dark"
-                  variant="dark"
+                  variant="outline-dark, dark"
                   type="submit"
                 >
                   {" "}

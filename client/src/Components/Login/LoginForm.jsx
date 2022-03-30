@@ -32,8 +32,8 @@ function LoginForm({onLogin}) {
     
     return (
         <Container 
-        style={{backgroundColor: "#6dc2a0", borderRadius: '5px'}} >
-            <h1>Villagrr</h1>
+        style={{backgroundColor: "#6dc2a0", borderRadius: '5px', fontFamily: 'Fink'}} >
+            <h1 style={{fontFamily: 'Fink'}}>Villagrr</h1>
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3">
                     <Form.Label>Email address</Form.Label>

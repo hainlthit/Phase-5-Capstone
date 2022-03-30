@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { Container, Alert } from "react-bootstrap";
+import './App.css';
 
 // Redux
 import { useDispatch } from "react-redux";
@@ -64,8 +65,14 @@ function App() {
   if (!user)
     return (
       <>
-        <Container >
-          <Alert style={{backgroundColor: "#6dc2a0", borderRadius: '5px'}} >
+        <Container>
+          <Alert
+            style={{
+              backgroundColor: "#6dc2a0",
+              borderRadius: "5px",
+              fontFamily: "Fink",
+            }}
+          >
             Please Login OR Create an Account to enter
           </Alert>
         </Container>
@@ -87,9 +94,6 @@ function App() {
         <Route exact path="/villagers/:id" element={<VillagerDetail />} />
         <Route exact path="/islands/:id" element={<IslandDetail />} />
         <Route exact path="/save_villager/:id" element={<AddVillager />} />
-        {/* <Route exact path="/spells" element={<Spells />} /> */}
-        {/* <Route exact path="/skills" element={<Skills />} /> */}
-        {/* <Route exact path="/spells/:id" element={<SpellDetail />} /> */}
       </Routes>
     </div>
   );

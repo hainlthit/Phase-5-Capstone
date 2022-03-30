@@ -37,3 +37,12 @@
   }
 }
 
+@font-face {
+  font-family: finkheavy;
+  src: url('fonts/FinkHeavy.woff2');
+}
+
+body * {
+  font-family: finkheavy, !important;
+}
+

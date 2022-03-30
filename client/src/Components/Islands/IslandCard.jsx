@@ -19,12 +19,17 @@ export default function IslandCard() {
         <div class="row">
           <div class="col">
             <Link to={"/add_island"}>
-              <Button> Add Island </Button>
+              <Button style={{ backgroundColor: "#c68483" }}>
+                Build your Dream Island
+              </Button>
             </Link>
           </div>
           <div class="col">
             <Link to={"/add_visitors"}>
-              <Button> Add Visitors </Button>
+              <Button style={{ backgroundColor: "#c68483" }}>
+                {" "}
+                Invite some Friends{" "}
+              </Button>
             </Link>
           </div>
         </div>
@@ -61,7 +66,10 @@ export default function IslandCard() {
                   <Link to={`/islands/${data.id}`}>
                     <Button
                       aria-pressed="false"
-                      style={{ textAlign: "center" }}
+                      style={{
+                        textAlign: "center",
+                        backgroundColor: "#c68483",
+                      }}
                     >
                       More Info
                     </Button>

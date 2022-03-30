@@ -65,7 +65,7 @@ export default function VillagerCard() {
                 </li>
                 <li class="list-group-item" style={{ textAlign: "center" }}>
                   <Link to={`/save_villager/${data.id}`}>
-                    <button> Add Villager </button>
+                    <button  style={{ backgroundColor: "#c68483" }} > Add Villager </button>
                   </Link>{" "}
                 </li>
                 <li

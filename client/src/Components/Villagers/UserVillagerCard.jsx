@@ -12,7 +12,7 @@ function UserVillagerCard() {
         Meet user created Villagers!
       </h1>
       <Link to={"/add_villager"}>
-        <Button> Add Villager </Button>
+        <Button style={{ backgroundColor: "#c68483" }}> Add Villager </Button>
       </Link>
       <Carousel>
         {userVillagers.map((data) => (
@@ -41,7 +41,10 @@ function UserVillagerCard() {
                   <Link to={`/villagers/${data.id}`}>
                     <Button
                       aria-pressed="false"
-                      style={{ textAlign: "center" }}
+                      style={{
+                        textAlign: "center",
+                        backgroundColor: "#c68483",
+                      }}
                     >
                       More Info
                     </Button>

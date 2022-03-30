@@ -18,7 +18,7 @@ export default function VisitorsCard() {
                 alt="Character"
               ></img>
               <div class="card-body">
-                <h5 class="card-title" style={{ textAlign: "center" }}>
+                <h5 class="card-title" style={{ textAlign: "center", fontFamily: 'Fink' }}>
                   {data.villager["name"]}
                 </h5>
               </div>

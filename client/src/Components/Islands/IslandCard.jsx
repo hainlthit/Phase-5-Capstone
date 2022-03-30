@@ -30,15 +30,11 @@ export default function IslandCard() {
         </div>
       </div>
 
-      <Carousel>
+      <Carousel style={{ backgroundColor: "#f7f1b6" }}>
         {islandData.map((data) => (
           <Carousel.Item key={data.id}>
             <div class="card">
-              <img
-                class="card-img-top"
-                src={data.image}
-                alt="Island"
-              ></img>
+              <img class="card-img-top" src={data.image} alt="Island"></img>
               <div class="card-body">
                 <h5 class="card-title" style={{ textAlign: "center" }}>
                   {data.name}

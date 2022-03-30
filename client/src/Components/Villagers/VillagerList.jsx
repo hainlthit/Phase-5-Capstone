@@ -18,21 +18,21 @@ export default function VillagerList() {
       <div class="container" style={{ textAlign: "center" }}>
         <div class="row">
           <div class="col">
-            <Button onClick={flipTrue}> Random </Button>
+            <Button onClick={flipTrue}> Villagrr </Button>
           </div>
           <div class="col">
-            <Button onClick={flipFalse}> Users </Button>
+            <Button onClick={flipFalse}> Villagers Ready for a Home </Button>
           </div>
         </div>
       </div>
       {flip ? (
         <div>
-          <h1 style={{ textAlign: "center" }}> Random Villagers </h1>
+          <h1 style={{ textAlign: "center" }}> Swipe Thru </h1>
           <VillagerCard />
         </div>
       ) : (
         <div>
-          <h1 style={{ textAlign: "center" }}> User Created Villagers </h1>
+          <h1 style={{ textAlign: "center" }}> Take me to your island! </h1>
           <UserVillagerCard  />
         </div>
       )}

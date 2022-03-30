@@ -64,8 +64,8 @@ function App() {
   if (!user)
     return (
       <>
-        <Container>
-          <Alert variant="primary">
+        <Container >
+          <Alert style={{backgroundColor: "#6dc2a0", borderRadius: '5px'}} >
             Please Login OR Create an Account to enter
           </Alert>
         </Container>

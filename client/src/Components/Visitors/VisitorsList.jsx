@@ -5,7 +5,7 @@ import VisitorsCard from "./VisitorsCard";
 export default function VisitorsList() {
   return (
     <>
-      <div>VisitorsList</div>
+    <h2 style={{ textAlign: "center" }}>All Visitors</h2>
       <div>
         {" "}
         <VisitorsCard />

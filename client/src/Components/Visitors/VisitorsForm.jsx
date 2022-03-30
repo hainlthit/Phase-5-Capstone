@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { createVisitor } from "./VisitorsSlice";
 import { fetchIslands } from "../Islands/IslandsSlice";
 
+
 export default function VisitorsForm() {
   const dispatch = useDispatch();
   // const navigate = useNavigate();
@@ -12,10 +13,7 @@ export default function VisitorsForm() {
   const villagerData = useSelector((state) => [...state.newVillagers]);
 
   const [villager, setVillager] = useState("");
-
-  console.log(islandData);
-
-  console.log(villagerData);
+  const [errors, setErrors] = useState([]);
 
   const villagerOptions = villagerData.map(({ id, name }) => (
     <option key={id} value={id}>
@@ -40,10 +38,12 @@ export default function VisitorsForm() {
         console.log(data);
         dispatch(fetchIslands());
       })
-      .catch((e) => {
-        console.log(e);
+      .catch((data) => {
+        setErrors(data);
       });
   }
+
+  console.log(errors);
 
   return (
     <>

@@ -6,7 +6,7 @@ class Island < ApplicationRecord
   has_many :visitors,  dependent: :destroy
   has_many :villagers, through: :visitors, before_add: :check_villagers_limit
 
-  validates :user_id, uniqueness: true
+  validates :user_id, uniqueness: true 
 
   private
 

@@ -8,6 +8,7 @@ export default function IslandForm() {
   const [newName, setNewName] = useState("");
   const [newImage, setNewImage] = useState("");
   const [newDescription, setNewDescription] = useState("");
+  // const [errors, setErrors] = useState("");
 
   const users = useSelector((state) => state.users.entities);
 
@@ -40,9 +41,9 @@ export default function IslandForm() {
         console.log(data);
       })
       .catch((e) => {
-        console.log(e);
+        console.log(e.errors);
       });
-    
+
     dispatch(fetchUsers());
     navigate("/islands");
     console.log(newIslandObj);

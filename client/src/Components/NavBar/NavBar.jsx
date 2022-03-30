@@ -4,8 +4,11 @@ import { NavLink } from "react-router-dom";
 function NavBar({ handleLogOutClick, user }) {
   return (
     <nav class="navbar navbar-expand-lg navbar navbar navbar-light">
-      <div class="container-fluid">
-        <p class="navbar-brand" >Villagrr</p>
+      <div
+        style={{ backgroundColor: "#6dc2a0", borderRadius: "5px" }}
+        class="container-fluid"
+      >
+        <p class="navbar-brand">Villagrr</p>
         <button
           class="navbar-toggler"
           type="button"

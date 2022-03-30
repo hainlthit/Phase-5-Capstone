@@ -15,11 +15,13 @@ function Login({ onLogin }) {
           {showLogin ? (
             <>
               <LoginForm onLogin={onLogin} />
-              <div>
+              <div style={{ backgroundColor: "#6dc2a0", borderRadius: "5px" }}>
                 Don't have an account? &nbsp;
                 <Button
                   variant="outline-dark"
                   onClick={() => setShowLogin(false)}
+                  variant="dark"
+                  type="submit"
                 >
                   Sign Up
                 </Button>
@@ -27,6 +29,8 @@ function Login({ onLogin }) {
                   onClick={() => setShowResetForm(!showResetForm)}
                   className="m-3"
                   variant="outline-dark"
+                  variant="dark"
+                  type="submit"
                 >
                   {" "}
                   {showResetForm ? "Cancel Reset Password" : "Reset Password"}

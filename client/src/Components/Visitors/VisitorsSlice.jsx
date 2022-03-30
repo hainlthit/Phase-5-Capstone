@@ -31,8 +31,12 @@ export const createVisitor = createAsyncThunk(
       },
       body: JSON.stringify(island_id, villager_id),
     }).then((res) => res.json());
+    
   }
+  
 );
+
+
 
 // export const updateComment = createAsyncThunk(
 //   "comments/updateComment",

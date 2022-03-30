@@ -31,7 +31,8 @@ function LoginForm({onLogin}) {
     }
     
     return (
-        <Container>
+        <Container 
+        style={{backgroundColor: "#6dc2a0", borderRadius: '5px'}} >
             <h1>Villagrr</h1>
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3">

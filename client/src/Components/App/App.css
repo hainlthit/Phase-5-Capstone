@@ -45,17 +45,19 @@
 
 h1 {
   font-family: FinkHeavy;
-  Color: "#c68483";
+  color: #FFD700;
+  text-shadow: 2px 2px 8px rgb(31, 30, 30);
+
 }
 
 h2 {
   font-family: FinkHeavy;
-  Color: "#c68483";
+
 }
 
 h3 {
   font-family: FinkHeavy;
-  Color: "#c68483";
+
 }
 
 .carousel-indicators {
@@ -64,5 +66,12 @@ h3 {
   opacity: 0
 }
 
+p {
+color: #FFD700;
+font-size: 25px;
+}
 
-
+span {
+  color: #FFD700;
+  font-size: 25px;
+}

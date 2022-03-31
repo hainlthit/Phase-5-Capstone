@@ -9,11 +9,10 @@ function NavBar({ handleLogOutClick, user }) {
           backgroundColor: "#6dc2a0",
           borderRadius: "5px",
           fontFamily: "FinkHeavy",
-          fontColor: "#eb7473",
         }}
         class="container-fluid"
       >
-        <p class="navbar-brand">Villagrr</p>
+        <p class="navbar-brand-bg-dark">Villagrr</p>
         <button
           class="navbar-toggler"
           type="button"
@@ -83,7 +82,7 @@ function NavBar({ handleLogOutClick, user }) {
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form> */}
-          <span class="navbar-text">Hi, {user.username}</span>
+          <span class="navbar-text-bg-dark">Hi, {user.username}</span>
         </div>
       </div>
     </nav>

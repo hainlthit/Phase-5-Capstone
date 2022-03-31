@@ -58,6 +58,11 @@ h3 {
   Color: "#c68483";
 }
 
+.carousel-indicators {
+  background-color: red;
+  pointer-events: none;
+  opacity: 0
+}
 
 
 

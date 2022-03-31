@@ -10,7 +10,7 @@ export default function VisitorsCard() {
 
   return (
     <>
-      <Carousel>
+      <Carousel >
         {visitors?.map((data) => (
           <Carousel.Item key={data.id}>
             <div class="card" style={{ fontFamily: "FinkHeavy" }}>

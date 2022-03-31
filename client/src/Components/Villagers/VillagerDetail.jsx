@@ -41,7 +41,7 @@ function VillagerDetail() {
   return (
     <>
       {edits ? (
-        <div class="card">
+        <div class="card" style={{ fontFamily: "FinkHeavy" }}>
           <img
             class="card-img-top"
             src={currentVillager.image}

@@ -37,10 +37,10 @@ export default function VisitorsDetail() {
 
   return (
     <>
-    <h1 className="reviews-h1" style={{ textAlign: "center" }}>
+    <h1 className="reviews-h1" style={{ textAlign: "center"  }}>
       VISITOR DETAILS
     </h1>
-    <div class="card">
+    <div class="card" style={{ fontFamily: "FinkHeavy" }}>
       <img
         class="card-img-top"
         src={currentVisitor.villager?.image}

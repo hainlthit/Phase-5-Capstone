@@ -37,7 +37,7 @@ export default function VillagerCard() {
   return (
     <>
       <h1 className="reviews-h1" style={{ textAlign: "center" }}>
-        Meet a random Villager!
+        Meet a random Villagrr!
       </h1>
       <Carousel>
         {villagerData.map((data) => (

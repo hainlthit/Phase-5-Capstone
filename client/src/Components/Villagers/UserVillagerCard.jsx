@@ -9,7 +9,7 @@ function UserVillagerCard() {
   return (
     <>
       <h1 className="reviews-h1" style={{ textAlign: "center" }}>
-        Meet user created Villagers!
+        Villagers ready to go on Vacation
       </h1>
       <Link to={"/add_villager"}>
         <Button style={{ backgroundColor: "#c68483" }}> Add Villager </Button>

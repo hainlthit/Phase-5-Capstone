@@ -21,7 +21,7 @@ export default function VillagerList() {
             <Button  style={{ backgroundColor: "#c68483" }} onClick={flipTrue}> Villagrr </Button>
           </div>
           <div class="col">
-            <Button  style={{ backgroundColor: "#c68483" }}  onClick={flipFalse}> Villagers Ready for a Home </Button>
+            <Button  style={{ backgroundColor: "#c68483" }}  onClick={flipFalse}> Villagers ready to go on Vacation </Button>
           </div>
         </div>
       </div>

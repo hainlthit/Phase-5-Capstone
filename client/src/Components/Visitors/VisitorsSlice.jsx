@@ -9,14 +9,14 @@ export const fetchVisitors = createAsyncThunk(
 
 export const deleteVisitor = createAsyncThunk(
   "visitors/deleteVisitor",
-  async (visitorID) => {
-    fetch(`/comments/${visitorID}`, {
+  async (currentVisitorId) => {
+    fetch(`/visitors/${currentVisitorId}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
       },
     });
-    return visitorID;
+    return currentVisitorId;
   }
 );
 
@@ -43,10 +43,9 @@ const visitorsSlice = createSlice({
     [fetchVisitors.fulfilled](state, action) {
       state.entities = action.payload;
     },
-    [deleteVisitor.fulfilled](state, action) {
-      state.entities = state.entities.filter(
-        (visitor) => visitor.id !== action.payload
-      );
+    [deleteVisitor.fulfilled]: (state, action) => {
+      let index = state.entities.findIndex(({ id }) => id === action.payload.id);
+      state.entities.splice(index, 1);
     },
     [createVisitor.fulfilled](state, action) {
       state.entities = [...state.entities, action.payload];

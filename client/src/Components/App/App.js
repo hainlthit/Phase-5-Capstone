@@ -24,6 +24,7 @@ import IslandContainer from "../Islands/IslandContainer.jsx";
 import IslandDetail from "../Islands/IslandDetail.jsx";
 import IslandForm from "../Islands/IslandForm.jsx";
 import VisitorsForm from "../Visitors/VisitorsForm.jsx";
+import VisitorsDetail from "../Visitors/VisitorsDetail.jsx";
 import VisitorsContainer from "../Visitors/VisitorsContainer.jsx";
 
 function App() {
@@ -70,7 +71,7 @@ function App() {
             style={{
               backgroundColor: "#6dc2a0",
               borderRadius: "5px",
-              fontFamily: "finkheavy",
+              fontFamily: "FinkHeavy",
             }}
           >
             Please Login OR Create an Account to enter
@@ -94,6 +95,7 @@ function App() {
         <Route exact path="/villagers/:id" element={<VillagerDetail />} />
         <Route exact path="/islands/:id" element={<IslandDetail />} />
         <Route exact path="/save_villager/:id" element={<AddVillager />} />
+        <Route exact path="/visitors/:id" element={<VisitorsDetail />} />
       </Routes>
     </div>
   );

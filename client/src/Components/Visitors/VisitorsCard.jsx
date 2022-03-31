@@ -1,6 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Carousel } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 export default function VisitorsCard() {
   const visitors = useSelector((state) => state.visitors.entities);
@@ -11,7 +13,7 @@ export default function VisitorsCard() {
       <Carousel>
         {visitors?.map((data) => (
           <Carousel.Item key={data.id}>
-            <div class="card" style={{ fontFamily: "FinkHeavy" }} >
+            <div class="card" style={{ fontFamily: "FinkHeavy" }}>
               <img
                 class="card-img-top"
                 src={data.villager["image"]}
@@ -24,22 +26,21 @@ export default function VisitorsCard() {
               </div>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item" style={{ textAlign: "center" }}>
-                  Visiting Island : {data.island["name"]}
+                  Visiting: {data.island["name"]}
                 </li>
                 <li class="list-group-item" style={{ textAlign: "center" }}>
-                  {/* <Link to={`/villagers/${data.id}`}>
+                  <Link to={`/visitors/${data.id}`}>
                     <Button
                       aria-pressed="false"
-                      style={{ textAlign: "center" }}
+                      style={{
+                        textAlign: "center",
+                        backgroundColor: "#c68483",
+                      }}
                     >
-                      More Info
+                     Send them packing
                     </Button>
-                  </Link> */}
+                  </Link>
                 </li>
-                <li
-                  class="list-group-item"
-                  style={{ textAlign: "center" }}
-                ></li>
               </ul>
             </div>
           </Carousel.Item>

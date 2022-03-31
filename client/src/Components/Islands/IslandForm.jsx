@@ -59,7 +59,14 @@ export default function IslandForm() {
       />
       <h1 style={{ textAlign: "center" }}>Island Form</h1>
 
-      <form onSubmit={handleSubmit}>
+      <form
+        onSubmit={handleSubmit}
+        style={{
+          backgroundColor: "#6dc2a0",
+          borderRadius: "5px",
+          fontFamily: "FinkHeavy",
+        }}
+      >
         <div class="form-group">
           <label for="exampleFormControlInput1">Name</label>
           <input
@@ -91,7 +98,12 @@ export default function IslandForm() {
         </div>
 
         <div type="submit" style={{ textAlign: "center" }}>
-          <button className="form-input" style={{ textAlign: "center", backgroundColor: "#c68483" }} >Start Construction </button>
+          <button
+            className="form-input"
+            style={{ textAlign: "center", backgroundColor: "#c68483" }}
+          >
+            Start Construction{" "}
+          </button>
         </div>
       </form>
     </>

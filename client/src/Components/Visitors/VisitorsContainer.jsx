@@ -4,7 +4,7 @@ import VisitorsList from "./VisitorsList";
 export default function VisitorsContainer() {
   return (
     <>
-    <h1 style={{ textAlign: "center" }}>All Visitors</h1>
+    <h1 style={{ textAlign: "center" }}>Villagrrs On Vacation!</h1>
     <VisitorsList />
   </>
   )

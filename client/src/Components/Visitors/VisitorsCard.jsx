@@ -11,14 +11,14 @@ export default function VisitorsCard() {
       <Carousel>
         {visitors?.map((data) => (
           <Carousel.Item key={data.id}>
-            <div class="card">
+            <div class="card" style={{ fontFamily: "FinkHeavy" }} >
               <img
                 class="card-img-top"
                 src={data.villager["image"]}
                 alt="Character"
               ></img>
               <div class="card-body">
-                <h5 class="card-title" style={{ textAlign: "center", fontFamily: 'Fink' }}>
+                <h5 class="card-title" style={{ textAlign: "center" }}>
                   {data.villager["name"]}
                 </h5>
               </div>

@@ -79,7 +79,14 @@ export default function AddVillager() {
         src="https://animalcrossingworld.com/wp-content/uploads/2020/11/Switch_ACNH_2020-DecUpdate_SCRN_12.png"
         alt="new villager form"
       />
-      <form onSubmit={handleSubmit}>
+      <form
+        onSubmit={handleSubmit}
+        style={{
+          backgroundColor: "#6dc2a0",
+          borderRadius: "5px",
+          fontFamily: "FinkHeavy",
+        }}
+      >
         <div class="form-group">
           <label for="exampleFormControlInput1">Name</label>
           <input
@@ -137,7 +144,9 @@ export default function AddVillager() {
         </div>
 
         <div type="submit" style={{ textAlign: "center" }}>
-          <button className="form-input">New Villager</button>
+          <button className="form-input" style={{ backgroundColor: "#c68483" }}>
+            New Villager
+          </button>
         </div>
       </form>
     </>

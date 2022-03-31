@@ -5,7 +5,12 @@ function NavBar({ handleLogOutClick, user }) {
   return (
     <nav class="navbar navbar-expand-lg navbar navbar navbar-light">
       <div
-        style={{ backgroundColor: "#6dc2a0", borderRadius: "5px" }}
+        style={{
+          backgroundColor: "#6dc2a0",
+          borderRadius: "5px",
+          fontFamily: "FinkHeavy",
+          fontColor: "#eb7473",
+        }}
         class="container-fluid"
       >
         <p class="navbar-brand">Villagrr</p>

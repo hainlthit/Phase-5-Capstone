@@ -38,11 +38,26 @@
 }
 
 @font-face {
-  font-family: finkheavy;
-  src: url('fonts/FinkHeavy.woff2');
+  font-family: FinkHeavy;
+  font-style: normal;
+  src: url('./fonts/FinkHeavy.woff2') format("woff2");
 }
 
-body * {
-  font-family: finkheavy, !important;
+h1 {
+  font-family: FinkHeavy;
+  Color: "#c68483";
 }
+
+h2 {
+  font-family: FinkHeavy;
+  Color: "#c68483";
+}
+
+h3 {
+  font-family: FinkHeavy;
+  Color: "#c68483";
+}
+
+
+
 

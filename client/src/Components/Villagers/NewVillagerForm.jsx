@@ -13,7 +13,7 @@ export default function NewVillagerForm() {
 
   const users = useSelector((state) => state.users.entities);
 
-  console.log(users.username)
+  console.log(users.username);
 
   function handleSetNewName(e) {
     setNewName(e.target.value);
@@ -75,7 +75,14 @@ export default function NewVillagerForm() {
 
       <h1 style={{ textAlign: "center" }}>NewVillagerForm</h1>
 
-      <form onSubmit={handleSubmit}>
+      <form
+        onSubmit={handleSubmit}
+        style={{
+          backgroundColor: "#6dc2a0",
+          borderRadius: "5px",
+          fontFamily: "FinkHeavy",
+        }}
+      >
         <div class="form-group">
           <label for="exampleFormControlInput1">Name</label>
           <input
@@ -132,7 +139,7 @@ export default function NewVillagerForm() {
           />
         </div>
         <div type="submit" style={{ textAlign: "center" }}>
-          <button className="form-input">New Villager</button>
+          <button  style={{ backgroundColor: "#c68483" }} className="form-input">New Villager</button>
         </div>
       </form>
     </>

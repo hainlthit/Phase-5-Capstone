@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { createVisitor } from "./VisitorsSlice";
 import { fetchIslands } from "../Islands/IslandsSlice";
 
-
 export default function VisitorsForm() {
   const dispatch = useDispatch();
   // const navigate = useNavigate();
@@ -54,13 +53,25 @@ export default function VisitorsForm() {
       />
       <h1 style={{ textAlign: "center" }}>Visitors Form</h1>
 
-      <form onSubmit={handleSubmit}>
-        <p> Add a villager to {islandData[0].name} </p>
+      <form
+        onSubmit={handleSubmit}
+        style={{
+          backgroundColor: "#6dc2a0",
+          borderRadius: "5px",
+          fontFamily: "FinkHeavy",
+        }}
+      >
+        <h2> Add a villager to {islandData[0].name} </h2>
         <label className="input-label">Villager: </label>
         <br />
         <select onChange={handleVillagerSelect}>{villagerOptions}</select>
         <div type="submit" style={{ textAlign: "center" }}>
-          <button className="form-input">New Visitors</button>
+          <button
+            className="form-input"
+            style={{ textAlign: "center", backgroundColor: "#c68483" }}
+          >
+            New Visitors
+          </button>
         </div>
       </form>
     </>

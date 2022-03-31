@@ -70,7 +70,7 @@ function App() {
             style={{
               backgroundColor: "#6dc2a0",
               borderRadius: "5px",
-              fontFamily: "Fink",
+              fontFamily: "finkheavy",
             }}
           >
             Please Login OR Create an Account to enter

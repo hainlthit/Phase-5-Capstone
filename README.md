@@ -1,9 +1,10 @@
-# Project Template: React/Rails API
+# Villagrr APP
 
 ## Description
 
-This project is scaffolded so that you can build a React frontend and Rails
-backend together, and easily deploy them to Heroku.
+This is my capstone project for my final phase at FlatIron School
+
+WIP 
 
 ## Requirements
 

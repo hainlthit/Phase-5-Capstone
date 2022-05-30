@@ -4,8 +4,6 @@
 
 This is my capstone project for my final phase at FlatIron School
 
-WIP 
-
 ## Requirements
 
 - Ruby on Rails

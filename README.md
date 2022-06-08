@@ -11,7 +11,8 @@ This is my capstone project for my final phase at FlatIron School
 - Heroku CLI
 - Postgresql
 - Redux
-
+- Hosted on Heroku
+- 
 ## Stories
 
 - Users can log in

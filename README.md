@@ -12,7 +12,7 @@ This is my capstone project for my final phase at FlatIron School
 - Postgresql
 - Redux
 - Hosted on Heroku
-- 
+
 ## Stories
 
 - Users can log in

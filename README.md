@@ -2,7 +2,7 @@
 
 ## Description
 
-This is my capstone project for my final phase at FlatIron School
+This is my capstone project for my final phase at FlatIron School based on the Animal Crossing API
 
 ## Requirements
 
